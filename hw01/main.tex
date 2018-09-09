@@ -70,6 +70,63 @@ F & F & T & \bf T & \bf T \\
 \end{array}
 $$
 
+Since $P \implies Q$ is equivalent to $(\lnot P) \lor Q$, their negations will be
+equivalent. So we negate  $(\lnot P) \lor Q$ and manipulate using equivalences from
+Problem 1 to find the negation:
+
+$$
+\begin{array}{rl}
+\lnot (P \implies Q) &= \lnot (\lnot P \lor Q) \\
+&= \lnot(\lnot P \lor \lnot (\lnot Q)) \\
+&= \lnot (\lnot (P \land (\lnot Q))) \\
+&= P \land (\lnot Q).
+\end{array}
+$$
+
+We also used the fact that $\lnot (\lnot P) \equiv P$, which we now show with a
+truth table:
+
+$$
+\begin{array}{|c|c|c|}
+P & \lnot P & \lnot (\lnot P) \\
+\hline
+\bf T & F & \bf T \\
+\bf F & T & \bf F \\
+\end{array}
+$$
+
+\subsection*{Problem 3}
+
+Find the negation of the following statements.
+
+a) $\lnot(P \land \lnot Q) \lor R$
+
+$$
+\begin{array}{rl}
+\lnot (\lnot(P \land \lnot Q) \lor R) &= (P \land \lnot Q) \land \lnot R \\
+&= P \land \lnot Q \land \lnot R.
+\end{array}
+$$
+
+b) $P \implies (Q \lor R)$
+
+$$
+\begin{array}{rl}
+\lnot (P \implies (Q \lor R)) &= P \land \lnot (Q \lor R) \\
+&= P \land \lnot Q \land \lnot R.
+\end{array}
+$$
+
+c) $\lnot (P \lor Q) \implies (R \lor S)$
+
+$$
+\begin{array}{rl}
+\lnot (\lnot (P \lor Q) \implies (R \lor S))
+&= \lnot (\lnot (P \lor Q) \land \lnot (R \lor S)) \\
+&= (P \lor Q) \lor (R \lor S) \\
+&= P \lor Q \lor R \lor S.
+\end{array}
+$$
 
 
 \end{document}
