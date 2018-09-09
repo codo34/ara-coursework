@@ -1,0 +1,75 @@
+\documentclass[11pt]{article}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\P}{{\cal P}}
+
+\pagestyle{empty}
+
+
+\begin{document}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{9pt}
+
+
+\section*{Math 351: Homework 1 (Due September 14)}
+\section*{Name: Jack Ellert-Beck}
+
+\bigskip
+
+From the {\bf 0.1} exercises on pages 9, work exercises 1,2,3,5,6,7.
+
+\subsection*{Problem 1}
+
+Prove the following equivalences:
+
+a) $\lnot (P \lor Q) \equiv (\neg P \land \lnot Q)$
+
+$$
+\begin{array}{|c|c|c|c|c|c|c|}
+P & Q & \lnot P & \lnot Q & P \lor Q & \lnot (P \lor Q) & (\lnot P \land \lnot Q) \\
+\hline
+T & T & F & F & T & \bf F & \bf F \\
+T & F & F & T & T & \bf F & \bf F \\
+F & T & T & F & T & \bf F & \bf F \\
+F & F & T & T & F & \bf T & \bf T \\
+\end{array}
+$$
+
+b) $\lnot (P \land Q) \equiv (\lnot P \lor \lnot Q)$
+
+$$
+\begin{array}{|c|c|c|c|c|c|c|}
+P & Q & \lnot P & \lnot Q & P \land Q & \lnot (P \land Q) & (\lnot P \lor \lnot Q) \\
+\hline
+T & T & F & F & T & \bf F & \bf F \\
+T & F & F & T & F & \bf T & \bf T \\
+F & T & T & F & F & \bf T & \bf T \\
+F & F & T & T & F & \bf T & \bf T \\
+\end{array}
+$$
+
+\subsection*{Problem 2}
+
+Prove that $P \implies Q \equiv (\lnot P) \lor Q$. Deduce that the negation of
+$P \implies Q$ is $P \land (\lnot Q)$.
+
+$$
+\begin{array}{|c|c|c|c|c|}
+P & Q & \lnot P & (\lnot P) \lor Q & P \implies Q \\
+\hline
+T & T & F & \bf T & \bf T \\
+T & F & F & \bf F & \bf F \\
+F & T & T & \bf T & \bf T \\
+F & F & T & \bf T & \bf T \\
+\end{array}
+$$
+
+
+
+\end{document}
