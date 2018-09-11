@@ -22,13 +22,15 @@
 
 \bigskip
 
-From the {\bf 0.1} exercises on pages 9, work exercises 1,2,3,5,6,7.
-
+\subsection*{Section 0.2}
 \subsection*{Problem 1}
 
 Prove the following equivalences:
 
 a) $\lnot (P \lor Q) \equiv (\neg P \land \lnot Q)$
+
+We can write a truth table that lists the truth values of
+$\lnot (P \lor Q)$ and $(\neg P \land \lnot Q)$ for all truth values of $P$ and $Q$:
 
 $$
 \begin{array}{|c|c|c|c|c|c|c|}
@@ -41,7 +43,11 @@ F & F & T & T & F & \bf T & \bf T \\
 \end{array}
 $$
 
+Since the two statements have the same truth value in all cases, they are equivalent.
+
 b) $\lnot (P \land Q) \equiv (\lnot P \lor \lnot Q)$
+
+We can write a truth value to test every case:
 
 $$
 \begin{array}{|c|c|c|c|c|c|c|}
@@ -54,10 +60,16 @@ F & F & T & T & F & \bf T & \bf T \\
 \end{array}
 $$
 
+Since both statements have the same truth value for any value of $P$ or $Q$, they
+are equivalent.
+
 \subsection*{Problem 2}
 
 Prove that $P \implies Q \equiv (\lnot P) \lor Q$. Deduce that the negation of
 $P \implies Q$ is $P \land (\lnot Q)$.
+
+We write a truth table to show that $P \implies Q$ has the same truth value as
+$(\lnot P)\lor Q$ in all cases:
 
 $$
 \begin{array}{|c|c|c|c|c|}
@@ -122,11 +134,42 @@ c) $\lnot (P \lor Q) \implies (R \lor S)$
 $$
 \begin{array}{rl}
 \lnot (\lnot (P \lor Q) \implies (R \lor S))
-&= \lnot (\lnot (P \lor Q) \land \lnot (R \lor S)) \\
-&= (P \lor Q) \lor (R \lor S) \\
-&= P \lor Q \lor R \lor S.
+&= \lnot ((P \lor Q) \lor (R \lor S)) \\
+&= \lnot (P \lor Q) \land \lnot (R \lor S) \\
+&= \lnot P \land \lnot Q \land \lnot R \land \lnot S.
 \end{array}
 $$
+\subsection*{Problem 5}
+
+Prove that an implication is equivalent to its contrapositive.
+
+The contrapositive of $P \implies Q$ is the statement
+$\lnot Q \implies \lnot P$. We can manipulate the statement $\lnot P \lor Q$, noting
+that it is equivalent to $P \implies Q$:
+$$
+\begin{array}{rl}
+\lnot P \lor Q &= Q \lor \lnot P \\
+&= \lnot (\lnot Q) \lor \lnot P \\
+&= \lnot Q \implies \lnot P.
+\end{array}
+$$
+
+\subsection*{Problem 6}
+An example of an implication whose converse is not true:
+
+If polygon $ABCD$ is a square, then its interior angles are all 90 degrees.
+
+An example of an implcation whose converse is true:
+\[ (x = 4) \implies (x+2 = 6) \]
+\subsection*{Problem 7}
+
+\subsection*{Section 0.3}
+\subsection*{Problem 1}
+\subsection*{Problem 2}
+\subsection*{Problem 3}
+\subsection*{Problem 4}
+\subsection*{Problem 5}
+\subsection*{Problem 17}
 
 
 \end{document}
