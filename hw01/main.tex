@@ -267,8 +267,95 @@ $B \subseteq f(f^{-1}(B))$, and thus $B = f(f^{-1}(B))$.
 Let $f: X \to Y$ be a function. Prove that $f(A\cup B) = f(A) \cup f(B)$ for all
 $A, B \in X$.
 
+Let $y \in Y$ and $x \in X$ such that $f(x) = y$ and $y \in f(A\cup B)$. $y \in f(A\cup B)$
+if and only if $x \in A \cup B$. Equivalently we can say $x \in A$ or $x \in B$,
+which is true if
+and only if $y \in f(A)$ or $y \in f(B)$. By definition, this means $y \in f(A) \cup f(B)$.
+Since $y \in f(A\cup B) \iff y \in f(A) \cup f(B)$, $f(A \cup B) = f(A) \cup f(B)$ for
+all $A, B \in X$.
+
 \subsection*{Problem 18}
+
+Let $f:X\to Y$ be a function.
+
+a) Prove that $f(A \cap B) \subseteq f(A) \cap f(B)$ for all sets $A, B \subseteq X$
+but that equality does not hold in general. 
+
+Let $y \in f(A \cap B)$. There must exist at least one $x \in A \cap B$ such that $f(x)=y$. 
+By definition $x \in A$ and $x \in B$, so $y \in f(A)$ and $y \in f(B)$.
+Since this is true for 
+any $y \in f(A \cap B)$, it must be that $f(A \cap B) \subseteq f(A) \cap f(B)$.
+
+We can show a case where $f(A \cap B) \subsetneq f(A) \cap f(B)$.
+
+Take $X = \{ 1, 2, 3 \}, Y = \{ 8, 9\}$ and $A, B \subseteq X$ where $A = \{1, 2\}$
+and $B = \{1, 3\}$. Define $f:X\to Y$ such that $f(1) = 9, f(2) = 8, f(3) = 8$.
+Now we find that $(A \cap B) = \{1\}, f(A \cap B) = \{9\}, f(A) = \{8, 9\},
+f(B) = \{8, 9\}$, and $(f(A) \cap f(B)) = \{8, 9\}$. Note that $\{9\} \subsetneq \{8, 9\}$
+in this case, but it still satisfies the property we proved above. 
+
+b) Prove that if $f$ is injective, $f(A \cap B) = f(A) \cap f(B)$.
+
+We already showed that for general $f$, $f(A \cap B) \subseteq f(A) \cap f(B)$. So we only
+need to prove that $f(A) \cap f(B) \subseteq f(A \cap B)$ in order to conclude that
+$f(A \cap B) \subseteq f(A) \cap f(B)$. Let $y \in f(A) \cap f(B)$, which means that 
+$y \in f(A)$ and $y \in f(B)$. Since $f$ is injective, there exists a unique $x$ such
+that $f(x) = y$. This means that $x$ must be in both $A$ and $B$. Thus, $x \in A\cap B$, 
+so $y \in f(A \cap B)$. Since all $y \in f(A) \cap f(B)$ is also in $f(A \cap B)$, 
+$f(A) \cap f(B) \subseteq f(A \cap B)$ and thus $f(A \cap B) = f(A) \cap f(B)$.
+
 \subsection*{Problem 19}
 
+Let $f : X \to Y$ be a function and let $A, B \subseteq Y$.
+
+\textbf{Show that} $f^{-1}(A \cup B) = f^{-1}(A) \cup f^{-1}(B)$:
+
+For all $x \in X$,
+
+$$
+\begin{array}{rl}
+x \in f^{-1}(A \cup B) &\iff f(x) \in A \cup B \\
+&\iff f(x) \in A \lor f(x) \in B \\
+&\iff x \in f^{-1}(A) \lor x \in f^{-1}(B) \\
+&\iff x \in f^{-1}(A) \cup f^{-1}(B).
+\end{array}
+$$
+
+Since $x \in f^{-1}(A \cup B) \iff x \in f^{-1}(A) \cup f^{-1}(B)$,
+we conclude that $f^{-1}(A \cup B) = f^{-1}(A) \cup f^{-1}(B)$.
+
+
+\textbf{Show that} $f^{-1}(A \cap B) = f^{-1}(A) \cap f^{-1}(B)$:
+
+For all $x \in X$,
+
+$$
+\begin{array}{rl}
+x \in f^{-1}(A \cap B) &\iff f(x) \in A \cap B \\
+&\iff f(x) \in A \land f(x) \in B \\
+&\iff x \in f^{-1}(A) \land x \in f^{-1}(B) \\
+&\iff x \in f^{-1}(A) \cap f^{-1}(B).
+\end{array}
+$$
+
+Since $x \in f^{-1}(A \cap B) \iff x \in f^{-1}(A) \cap f^{-1}(B)$,
+we conclude that $f^{-1}(A \cap B) = f^{-1}(A) \cap f^{-1}(B)$.
+
+
+\textbf{Show that} $f^{-1}(A \setminus B) = f^{-1}(A) \setminus f^{-1}(B)$:
+
+For all $x \in X$,
+
+$$
+\begin{array}{rl}
+x \in f^{-1}(A \setminus B) &\iff f(x) \in A \setminus B \\
+&\iff f(x) \in A \land f(x) \notin B \\
+&\iff x \in f^{-1}(A) \land x \notin f^{-1}(B) \\
+&\iff x \in f^{-1}(A) \setminus f^{-1}(B).
+\end{array}
+$$
+
+Since $x \in f^{-1}(A \setminus B) \iff x \in f^{-1}(A) \setminus f^{-1}(B)$,
+we conclude that $f^{-1}(A \setminus B) = f^{-1}(A) \setminus f^{-1}(B)$.
 
 \end{document}
