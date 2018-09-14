@@ -1,6 +1,7 @@
 \documentclass[11pt]{article}
 \usepackage{amsfonts}
 \usepackage{amsmath}
+\usepackage{amssymb}
 
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -162,14 +163,112 @@ If polygon $ABCD$ is a square, then its interior angles are all 90 degrees.
 An example of an implcation whose converse is true:
 \[ (x = 4) \implies (x+2 = 6) \]
 \subsection*{Problem 7}
+Negate the following statements:
+
+a) For every ice cream flavor there is a pie that goes with that flavor
+
+There exists an ice cream flavor for which there are no pies that go with it.
+
+b) For every race car there is a driver who can drive that car.
+
+There exists at least one race car with no driver who can drive it.
+
+c) There exists a race car that every driver can drive.
+
+For each race car there exists at least one driver who cannot drive it.
+
+d) There exists a driver that can drive every race car.
+
+For all race car drivers there exists at least one car they cannot drive.
 
 \subsection*{Section 0.3}
 \subsection*{Problem 1}
+
+Let $A, B \subseteq X$. Which of the statements is equivalent to 
+$A \cup B \neq \varnothing $?
+
+Answer: (b) $A \neq \varnothing \lor B \neq \varnothing $.
+For the union of $A$ and $B$ to be nonempty it is sufficient for at least one of $A$ or $B$
+to be nonempty.
+
 \subsection*{Problem 2}
+
+Let $A, B \subseteq X$. Which of the statements is equivalent to
+$A \cap B = \varnothing $?
+
+Answer: (b) $A = \varnothing \lor B = \varnothing$.
+If any one of $A$ or $B$ is empty, then their intersection will be empty.
+
 \subsection*{Problem 3}
+Let $A$ and $B$ be sets. Prove that $A = (A \cap B) \cup (A \setminus B)$.
+
+We consider the definitions of $A \cap B$ and $A \setminus B$. The set $A \cap B$
+is the set of all elements of $A$ that are also in $B$. The set $A \setminus B$ is the
+set of all elements of $A$ that are not in $B$. The union of these two sets,
+$(A \cap B) \cup (A \setminus B)$, is the set of all elements of $A$ that are also
+in $B$ or that are not also in $B$. Since everything is either in $B$ or not in $B$,
+this set contains all elements of $A$. Thus, $A = (A \cap B) \cup (A \setminus B)$. 
+
 \subsection*{Problem 4}
+
+Let $A$ and $B$ be sets. Prove that $A \setminus (A \setminus B) = B$.
+
+The premise is actually false. Let $A = \{1, 2\}$ and $B = \{2, 3\}$. We can see that
+$A \setminus B = \{1\}$ and that $A \setminus \{1\} = \{2\} \neq \{2, 3\}$.
+
+If instead the condition had been added that $B \subseteq A$, it would have been a good
+problem.
+
 \subsection*{Problem 5}
+
+Let $A, B \subseteq X$. Prove that $A \subseteq B \iff B^c \subseteq A^c$.
+
+We first prove that $A \subseteq B \implies B^c \subseteq A^c$. $A \subseteq B$ means that
+all elements of $A$ are also in $B$. Also, by definition, $x \in B^c \implies x \notin B$. 
+So, $\forall x \notin B^c$, $x$ cannot be in $A$, which means that $x \in A^c$. Thus, 
+$B^c \subseteq A^c$. 
+
+We now prove the other direction, that $B^c \subseteq A^c \implies A \subseteq B$.
+Note that any $x \in B^c$ is also in $A^c$. In other words, $x$ cannot be in $B^c$ and
+also be in $A$. So, any element of $A$ is also in $B$, which means $A \subseteq B$.
+
 \subsection*{Problem 17}
+
+Let $A$ and $B$ be two sets such that $A \subseteq B$. Prove that $\P (A) \subseteq \P (B)$.
+
+Let $S$ be any element of $\P (A)$. By the definition of $\P (A)$, $S \subseteq A$.
+Since $A \subseteq B$, every element of $S$ is in $B$ as well, so $S \subseteq B$.
+Hence, $S \in \P (B)$. So, every $S \in \P (A)$ is also in $\P (B)$, which means
+$\P (A) \subseteq \P (B)$. 
+
+\subsection*{Section 0.4}
+\subsection*{Problem 10}
+
+Let $f: X \to Y$ be a function.
+
+a) Prove that $f(f^{-1}(B)) \subseteq B$ for all $B \subseteq Y$.
+
+Take any $y \in f(f^{-1}(B))$. This means that $y=f(x)$ for some $x \in f^{-1}(B)$.
+By the definition of $f^{-1}(B)$, $f(x) \in B$, so $y \in B$. Thus,
+$f(f^{-1}(B)) \subseteq B$. 
+
+b) Prove that $f(f^{-1}(B)) = B$ when $f$ is surjective.
+
+We have already shown that $f(f^{-1}(B)) \subseteq B$ in general, so it is also true
+if $f$ is surjective. We will show that if $f$ is surjective, then 
+$B \subseteq f(f^{-1}(B))$, and thus that $f(f^{-1}(B)) = B$. For $f$ to be surjective,
+it is necessary that for all $y \in Y$ there exists some $x \in X$ such that $f(x) = y$.
+In particular, for all $y \in B$ there exists an $x \in f^{-1}(B)$ where $f(x) = y$.
+Hence, $y \in f(f^{-1}(B))$ for any $y \in B$. So, when $f$ is surjective,
+$B \subseteq f(f^{-1}(B))$, and thus $B = f(f^{-1}(B))$.
+
+\subsection*{Problem 17}
+
+Let $f: X \to Y$ be a function. Prove that $f(A\cup B) = f(A) \cup f(B)$ for all
+$A, B \in X$.
+
+\subsection*{Problem 18}
+\subsection*{Problem 19}
 
 
 \end{document}
