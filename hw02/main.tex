@@ -1,0 +1,124 @@
+\documentclass[11pt]{article}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\P}{{\cal P}}
+
+\pagestyle{empty}
+
+
+\begin{document}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{9pt}
+
+
+\section*{Math 351: Homework 2 (Due September 21)}
+\section*{Name: Jack Ellert-Beck}
+
+\bigskip
+
+\subsection*{Section 0.5}
+\subsection*{Problem 7}
+
+We will show by induction that for all integers $n \geq 1, n < 2^n$.
+
+For the base case, let $n=1$. $2^n = 2^1 = 2 > 1$, so the property holds.
+
+Now we will show that if $n < 2^n$ then $n+1 < 2^{n+1}$. We can add one to both sides
+of the first inequality: 
+$n+1 < 2^n + 1 < 2^n + 2^n < 2^n\cdot 2 = 2^{n+1}$. This completes the inductive step.
+Thus, by mathematical induction, the property is true for all $n \geq 1$.
+
+\subsection*{Problem 8}
+
+Let $\{F_n\}$ be the Fibonacci sequence. We will prove that for all $n \in \N$,
+\[ \sum^n_{i=0}F_i = F_{n+2}-1. \]
+
+We proceed by induction. Let $n=1$ and recall that $F_1=1$ and $F_3=2$.
+We see that $F_1 = 1 = 2 - 1 = F_3-1$.
+
+For the inductive step we assume $ \sum^n_{i=0}F_i = F_{n+2}-1 $, and we want
+to show that $ \sum^{n+1}_{i=0}F_i = F_{n+3}-1 $. In addition,
+recall that the definition of $\{F_n\}$ includes the statement 
+$F_n = F_{n-1} + F_{n+2}$. Consider the following equalities:
+
+\[
+\begin{array}{rl}
+\sum^{n+1}_{i=0}F_i &= \sum^n_{i=0}F_i + F_{n+1} \\
+&= F_{n+2} - 1 + F_{n+1} \\
+&= (F_{n+2} + F_{n+1}) - 1 \\
+&= F_{n+3} - 1.
+\end{array}
+\]
+By mathematical induction, this property must hold for all $n \in \N$.
+
+\subsection*{Problem 9}
+We will show that for all integers $n \geq 1$,
+\[ \sum^n_{i=1}\frac{1}{2^i} = 1-\frac{1}{2^n}. \]
+
+We proceed by induction. Consider the base case where $n=1$. We get
+$\frac{1}{2^1} = \frac{1}{2} = 1 - \frac{1}{2} = 1 - \frac{1}{2^1}$, so the
+base case is true.
+
+For the inductive step we assume $\sum^n_{i=1}\frac{1}{2^i} = 1-\frac{1}{2^n}$
+and we want to show that $\sum^{n+1}_{i=1}\frac{1}{2^i} = 1-\frac{1}{2^{n+1}}$.
+Note that the following equalities hold:
+
+\[
+\def\arraystretch{1.5}
+\begin{array}{rl}
+\sum^{n+1}_{i=1}\frac{1}{2^i} &= \sum^{n}_{i=1}\frac{1}{2^i} + \frac{1}{2^{n+1}} \\
+&= 1 - \frac{1}{2^n} + \frac{1}{2^{n+1}} \\
+&= 1 - \frac{2^{n+1} - 2^n}{2^n\cdot 2^{n+1}} \\
+&= 1 - \frac{2\cdot 2^n - 2^n}{2^n\cdot 2^{n+1}} \\
+&= 1 - \frac{2^n}{2^n\cdot 2^{n+1}} \\
+&= 1 - \frac{1}{2^{n+1}}.
+\end{array}
+\]
+So, by mathematical induction, this is true for all $n \geq 1$.
+
+\subsection*{Problem 11}
+
+We will show that for all integers $n \geq 1$,
+\[ \sum^n_{i=1}i^2= \frac{n(n+1)(2n+1)}{6}. \]
+
+We can show this by induction. We let $n=1$ for the base case, and we see that
+$1^2 = 1 = \frac{6}{6} = \frac{1\cdot 2\cdot 3}{6}$.
+
+For the inductive step we assume $\sum^n_{i=1}i^2= \frac{n(n+1)(2n+1)}{6}$
+and we want to show that 
+$\sum^{n+1}_{i=1}i^2= \frac{(n+1)(n+2)(2(n+1)+1)}{6}=\frac{(n+1)(n+2)(2n+3)}{6} $.
+Consider the following equalities:
+
+\[
+\def\arraystretch{1.5}
+\begin{array}{rl}
+\sum^{n+1}_{i=1}i^2 &= \sum^{n}_{i=1}i^2 + (n+1)^2 \\
+&= \frac{n(n+1)(2n+1)}{6} + (n+1)^2 \\
+&= \frac{n(n+1)(2n+1) + 6(n+1)^2}{6} \\
+&= \frac{(n+1)(n(2n+1) + 6(n+1))}{6} \\
+&= \frac{(n+1)(2n^2+7n+6)}{6} \\
+&= \frac{(n+1)(n+2)(2n+3)}{6}.
+\end{array}
+\]
+By mathematical induction, this property is true for all $n \geq 1$.
+
+\subsection*{Section 1.3}
+\subsection*{Problem 7}
+\subsection*{Argue that the set of finite sequences of 0's and 1's is countable}
+\subsection*{Argue that the set of infinite sequences of 0's and 1's is not countable}
+\subsection*{Problem 11}
+
+\subsection*{Section 2.1}
+\subsection*{Problem 1}
+\subsection*{Problem 2}
+\subsection*{Problem 4}
+\subsection*{Problem 6}
+
+
+\end{document}
