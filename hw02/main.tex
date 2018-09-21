@@ -280,7 +280,33 @@ when $n > N$. Now notice that when $n > N$, $a_nb_n < L\cdot\frac{B}{L} = B$.
 So we have shown that $\lim_{n\to\infty}a_nb_n=-\infty$.
 
 \subsection*{Problem 15}
+
+Suppose $(a_n)$ is a sequence with $a_n > 0$ and 
+$\lim_{n\to\infty} \frac{a_{n+1}}{a_n} = L$.
+We want to show that if $L < 1$, then $\lim_{n\to\infty}a_n=0$.
+By separability, there must exist some $\varepsilon > 0$ so that
+$L + \varepsilon < 1$. Further, by the definition of convergence to $L$, 
+there exists some $N \in \N$ such that 
+$n \geq N \implies \frac{a_{n+1}}{a_n} < L + \varepsilon$.
+Specifically, $\frac{a_{N+1}}{a_N}<L+\varepsilon$. We can rearrange this as
+$a_{N+1} < (L+\varepsilon)\cdot a_N$. Every ratio between successive terms of $a_n$ past
+$n=N$ will be smaller than $L+\varepsilon$, so it is valid to say that, in general,
+$a_{N+k} < (L+\varepsilon)\cdot a_{N+k-1}$. If we keep expanding $a_{N+k-1}$ using
+the same principle, then we can write $a_{N+k} < (L+\varepsilon)^k\cdot a_N$.
+Recall that $a_n > 0$, and note that the expression on the right
+side converges to 0 as $k\to\infty$ since $0<(L+\varepsilon)<1$, as shown in Problem 11. 
+So, by the Squeeze theorem, we can see that as $k\to\infty$, $a_{N+k}$ converges to 0
+as it is always greater than 0 and is less than another sequence that also 
+converges to 0.
+
+
 \subsection*{Problem 16}
+
+In the case where $L > 1$, $a_n\to\infty$ because even if the ratio between
+successive terms converges to 1.01, the sequence will grow without bound.
+If $L = 1$, the sequence $a_n$ will converge to some value. The ratio between
+successive terms approaches 1, so the sequence will tend to a single value as 
+$n\to\infty$.
 
 
 \end{document}
