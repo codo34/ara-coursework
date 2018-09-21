@@ -234,10 +234,51 @@ We showed that there exists an $N$ for any $\varepsilon$, namely, $N = N_1$.
 
 Now we deal with the case where $L=0$. This simplifies the problem, now
 we need to find an $N$ such that when $n > N$, $\left|\sqrt{x_n}\right|< \varepsilon$.
+Select some $\varepsilon > 0$ and fix it, and then set $\varepsilon_1 = \varepsilon^2$.
+We know that there exists some $N_1$ where for all $n > N_1$,
+$|x_n| < \varepsilon_1 = \varepsilon^2$. We take the square root of both sides (and
+note that since the left side is always positive, we can discard the negative 
+solution on the right)
+and see that $\left| \sqrt{x_n} \right| < \varepsilon$ when $n > N_1$. 
+
+Thus we have satisfied the definition
+in all cases, so $\lim_{n\to\infty} \sqrt{x_n} = \sqrt{L}$.
 
 \subsection*{Problem 6}
+WORK ON THIS ONE 
 \subsection*{Problem 11}
+Let $a>1$. We will show that $\lim_{n\to\infty}a^n=\infty$.
+To satisfy the definition of diverging to $\infty$, we will show
+$\forall B > 0, \exists N$ such that $n > N \implies a^n > B$. 
+If we choose $N = \log_a(B)$, we can see that 
+$n > \log_a(B) \implies a^n > a^{log_a(B)} = B$.
+
+Now consider if $0<a<1$. We will show that in this case, $\lim_{n\to\infty}a^n=0$
+by showing that $\forall \varepsilon > 0, \exists N$ such that
+$\left| a^n \right| < \varepsilon$. We can choose $N = log_a(\varepsilon)$.
+So, when $n > N$, $n > log_a(\varepsilon)$. Now we will raise $a$ to the power 
+of both sides, but we have to switch the inequality sign since $a^n$ is monotone
+decreasing. So, $a^n = |a^n| < a^{log_a(\varepsilon)} = \varepsilon$, and we
+conclude that the sequence converges to 0.
+
 \subsection*{Problem 13}
+Let $(a_n)$ and $(b_n)$ be sequences where $\lim_{n\to\infty}a_n=L$ and 
+$\lim_{n\to\infty}b_n=\infty$. We will show that if $L < 0$ then
+$\lim_{n\to\infty}a_nb_n=-\infty$.
+
+We want to show that $\forall B<0, \exists N$ such that
+$n > N \implies a_nb_n < B$. 
+By the definitions of convergence to $L$ and convergence to $\infty$, we know
+that $\forall \varepsilon>0, \exists N_1$ such that $n<N_1 \implies 
+|a_n-L|<\varepsilon$ and that $\forall M>0, \exists N_2$ such that
+$n > N_2 \implies b_n > M$. In particular, if we select $\varepsilon < L$, we can
+find an $N_1$ that ensures $a_n$ is negative for all $n > N_1$.
+In addition, if we select $M = \frac{-B}{L}$, we can find an
+$N_2$ to ensure $b_n > \left|\frac{B}{L}\right|$ for all $n > N_2$. 
+Now we take $N = \max(N_1, N_2)$ which will ensure both conditions
+when $n > N$. Now notice that when $n > N$, $a_nb_n < L\cdot\frac{B}{L} = B$. 
+So we have shown that $\lim_{n\to\infty}a_nb_n=-\infty$.
+
 \subsection*{Problem 15}
 \subsection*{Problem 16}
 
