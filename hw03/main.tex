@@ -1,0 +1,191 @@
+\documentclass[11pt]{article}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\P}{{\cal P}}
+
+\pagestyle{empty}
+
+
+\begin{document}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{9pt}
+
+
+\section*{Math 351: Homework 3 (Due September 28)}
+\section*{Name: Jack Ellert-Beck}
+
+\bigskip
+
+\subsection*{Problem 1}
+Let $x_1 = 2$ and define $x_{n+1} = \frac{1}{2}x_n+\frac{1}{x_n}$ for 
+$n = 2, 3,\ldots$
+
+\textbf{Prove that $x_n^2>2$ for all $n>1$}
+
+We proceed by induction. To start, consider the case where $n=2$. We see that
+$x_2^2 = (\frac{1}{2}x_1+\frac{1}{x_1})^2 = (\frac{1}{2}\cdot2+\frac{1}{2})^2
+= (\frac{3}{2})^2 = \frac{9}{4} > 2$.
+
+For the inductive step we assume that $x_n^2>2$, and we want to conclude from
+this that $x_{n+1}^2>2$. We proceed by manipulating the first inequality:
+\[
+\def\arraystretch{1.5}
+\begin{array}{rl}
+x_n^2>2 &\implies x_n^2-2>0 \\
+&\implies (x_n^2-2)^2>0 \\
+&\implies x_n^4-4x_n^2+4>0\\
+&\implies \frac{1}{4}x_n^2-1+\frac{1}{x_n^2}>0\\
+&\implies \frac{1}{4}x_n^2+1+\frac{1}{x_n^2}>2\\
+&\implies (\frac{1}{2}x_n+\frac{1}{x_n})^2 > 2\\
+&\implies x_{n+1}^2 > 2.
+\end{array}
+\]
+Thus, by mathematical induction, $x_n^2>2$ for all $n>1$.
+
+\textbf{Prove that $x_{n+1} < x_n$ for all $n$}
+
+We proceed by manipulating the inequality $x_n^2>2$. However, we notice that
+we have only shown this to be true for $n>1$. We will cover the case where
+$n=1$ later. We will also use the fact that $x_n > 0$ for all $n$, which we can
+see must be true as every $x_n$ is the sum of positive numbers in $\Q$. 
+So, we can see that
+\[
+\def\arraystretch{1.5}
+\begin{array}{rl}
+x_n^2>2&\implies \frac{x_n^2}{2}>1 \\
+&\implies\frac{x_n}{2}>\frac{1}{x_n} \\
+&\implies x_n > \frac{1}{x_n} + \frac{x_n}{2} \\
+&\implies x_n > x_{n+1}.
+\end{array}
+\]
+We have shown that $x_{n+1}<x_n$ for $n>1$. We finish by considering $n=1$:
+$x_2=\frac{3}{2}<2=x_1$. Thus, the sequence $(x_n)$ is monotone decreasing.
+
+\textbf{Prove that $\displaystyle{\lim_{n\to\infty}x_n^2 = 2}$}
+
+We have shown that the sequence $(x_n^2)$ is monotone decreasing
+and bounded from below, specifically bounded from below by the number 2.
+This sequence must therefore converge. In other words,
+there exists an $L$ such that $\lim_{n\to\infty}x_n^2=L$. 
+We can see also that $\lim_{n\to\infty}x_{n+1}^2=L$.
+With the defintion of $x_{n+1}$ we can expand this to get 
+\[\lim_{n\to\infty}\left(\frac{x_n}{2}+\frac{1}{x_n}\right)^2=
+\lim_{n\to\infty}\frac{x_n^2}{4}+1+\frac{1}{x_n^2}=
+\frac{L}{4}+1+\frac{1}{L}
+=L.\]
+Solving for $L$:
+\[
+\def\arraystretch{1.5}
+\begin{array}{rl}
+\frac{L}{4}+1+\frac{1}{L}=L &\implies 3L^2-4L-4=0 \\
+&\implies (L-2)(3L+2)=0 \\
+&\implies L=2 \textrm{ or } L=-\frac{2}{3}.
+\end{array}
+\]
+Since $x_n > 0$ for all $n$, we can dismiss the negative solution. Thus,
+$L=2$. In other words, $\lim_{n\to\infty}x_n^2=2$.
+
+\subsection*{Section 2.1}
+\subsection*{Problem 16 (Bonus)}
+\subsection*{Problem 18}
+
+Let $(a_n)$ be a sequence and let $L\in\R$. We want to prove that if every
+subsequence $(a_{n_k})$ has a subsequence $(a_{n_{k_l}})$ that converges to
+$L$, then the sequence $(a_n)$ converges to $L$. 
+
+We will prove this using the contrapositive. We hope to show that if $(a_n)$ does
+not converge to $L$ then there exists some subsequence $(a_{n_k})$ such that
+all of its subsequences $(a_{n_{k_l}})$ fail to converge to $L$.
+By the negation of the definition of convergence to $L$, we can assume that
+there exists an $\varepsilon>0$ where for all $N$, there is some $n>N$ such
+that $\left|a_n-L\right| \geq \varepsilon$. Find such an $\varepsilon$ and
+fix it. Set $N=1$. So, there is some $n_1>1$ so that
+$\left|a_{n_1}-L\right|\geq\varepsilon.$ Now consider $N=n_1$. We must also
+be able to find an $n_2>n_1$ where $\left|a_{n_2}-L\right|\geq\varepsilon$.
+We can continue this argument and find a sequence $(n_k)$ such that,
+for all $k$, $\left|a_{n_k}-L\right|\geq\varepsilon$. This subsequence of
+$(a_n)$ has been constructed such that it does not converge to $L$. More
+specifically, it has been constructed such that there are no values $k$ where
+$\left|a_{n_k}-L\right|<\varepsilon$. In other words, we cannot find any
+subsequences of $(a_{n_k})$ that converge to $L$, because for such a
+subsequence $(a_{n_{k_l}})$ to converge, there would have to be 
+infinitely many values of $l$ for which
+$\left|a_{n_{k_l}}-L\right|<\varepsilon$ for every $\varepsilon$.
+We conclude that if $(a_n)$ does not converge to $L$, we can find a subsequence
+of $(a_n)$ that does not have any subsequences that converge to $L$. So, by
+contraposition, if every subsequence of $(a_n)$ has a subsequence that
+converges to $L$, then $(a_n)$ converges to $L$.
+
+\subsection*{Section 2.2}
+\subsection*{Problem 25}
+Make sense of the following expression as a limit and find its value:
+
+\[ 1+\cfrac{1}{2+\cfrac{1}{2+\cfrac{1}{2+\ldots}}} \]
+
+Define a sequence $(a_n)$ where $a_1=1+\cfrac{1}{1}=2$ and
+$a_{n+1} = 1+\cfrac{1}{1+a_n}$. The value of the continued fraction above can
+be interpreted as $\lim_{n\to\infty}a_n$. Assume that $(a_n)$ converges to some
+value $L$, so $\lim_{n\to\infty}a_n=L$, and note that
+$\lim_{n\to\infty}a_{n+1}=L$ as well. We can use the recursive definition to
+expand this:
+\[
+\def\arraystretch{1.5}
+\begin{array}{rl}
+\lim_{n\to\infty}a_{n+1} &= \lim_{n\to\infty}1+\cfrac{1}{1+a_n} \\
+&= 1+\cfrac{1}{1+L} = L.
+\end{array}
+\]
+
+We solve for $L$:
+
+\[
+\def\arraystretch{1.5}
+\begin{array}{rl}
+L = 1+\cfrac{1}{1+L} &\implies L(L+1) = (L+1)+1 \\
+&\implies L^2+L=L+2 \\
+&\implies L^2-2=0 \\
+&\implies L=\sqrt{2} \textrm{ or } L=-\sqrt{2}.
+\end{array}
+\]
+Since each term of $(a_n)$ is positive, we can exclude the negative solution
+for $L$. So we find that $L=\sqrt{2}$, which is the value of the continued fraction.
+\subsection*{Problem 26}
+Make sense of the following expression as a limit and find its value:
+
+\[ \sqrt{2+\sqrt{2+\sqrt{2+\ldots}}} \]
+
+Define a sequence $(a_n)$ where $a_1=\sqrt{2}$ and
+$a_{n+1} = \sqrt{2+a_n}$. The value of the expression above can
+be interpreted as $\lim_{n\to\infty}a_n$. Assume that $(a_n)$ converges to some
+value $L$, so $\lim_{n\to\infty}a_n=L$, and note that
+$\lim_{n\to\infty}a_{n+1}=L$ as well. We can use the recursive definition to
+expand this:
+\[
+\def\arraystretch{1.5}
+\begin{array}{rl}
+\lim_{n\to\infty}a_{n+1} &= \lim_{n\to\infty}\sqrt{2+a_n} \\
+&= \sqrt{2+L} = L.
+\end{array}
+\]
+
+We solve for $L$:
+
+\[
+\def\arraystretch{1.5}
+\begin{array}{rl}
+\sqrt{2+L}=L &\implies 2+L=L^2 \\
+&\implies L^2-L-2=0 \\
+&\implies (L-2)(L+1)=0 \\
+&\implies L=2 \textrm{ or } L=-1.
+\end{array}
+\]
+Since each term of $(a_n)$ is positive, we can exclude the negative solution
+for $L$. So we find that $L=2$, which is the value of the expression.
+
+\end{document}
