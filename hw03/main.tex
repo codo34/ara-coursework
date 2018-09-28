@@ -91,8 +91,38 @@ Solving for $L$:
 Since $x_n > 0$ for all $n$, we can dismiss the negative solution. Thus,
 $L=2$. In other words, $\lim_{n\to\infty}x_n^2=2$.
 
+\subsection*{Problem 2}
+
+Prove that if $\limsup_{n\to\infty}a_n=L$ then for all $\varepsilon>0$ there
+are only finitely many $n\in\N$ for which $a_n>L+\varepsilon$.
+
+We can prove this through contraposition. We will assume that there exists
+at least one $\varepsilon>0$ such that there are infinitely many
+$n$ that satisfy $a_n>L+\varepsilon$. We want to show from this that
+$\limsup_{n\to\infty}a_n\neq L$. So, find such an $\varepsilon$ and fix it.
+Since there are infinitely many $n$ such that $a_n>L+\varepsilon$, there exists
+some subsequence $(a_{n_k})$ where for all $k$, $a_{n_k} > L+\varepsilon$.
+This subsequence has been constructed such that it is bounded below by $L+\varepsilon$.
+
+There are two possible cases for the upper bound of this subsequence. Let us first
+consider the case where $(a_{n_k})$ is bounded above by some $L'\in\R$. By
+the Bolzano-Weierstrass Theorem, there must be some subsequence
+$(a_{n_{k_l}})$ that converges to a value in $[L+\varepsilon,L']$. This value
+is greater than $L$. Since $(a_{n_{k_l}})$ is a subsequence of $a_n$, $L$ cannot
+be the $\limsup$ of $a_n$ because we have shown that there exists a subsequence that
+converges to a greater value.
+
+Now consider the case where $(a_{n_k})$ is not bounded above by any real value.
+This means that there must be some subsequence $(a_{n_{k_l}})$ which diverges
+to $+\infty$. Since this subsequence is a subsequence of $(a_n)$, the $\limsup$
+of $(a_n)$ would be $+\infty$ in this case. Thus, in both cases, 
+$\limsup_{n\to\infty}a_n\neq L$, which completes our proof.
+
+A similar argument can be used to show that
+$\limsup_{n\to\infty}a_n=L$ implies that for all $\varepsilon>0$ there
+exist only finitely many $n\in\N$ for which $a_n<L-\varepsilon$.
+
 \subsection*{Section 2.1}
-\subsection*{Problem 16 (Bonus)}
 \subsection*{Problem 18}
 
 Let $(a_n)$ be a sequence and let $L\in\R$. We want to prove that if every
@@ -187,5 +217,57 @@ We solve for $L$:
 \]
 Since each term of $(a_n)$ is positive, we can exclude the negative solution
 for $L$. So we find that $L=2$, which is the value of the expression.
+
+\subsection*{Problem 29}
+
+Let $(a_n), (b_n)$ be sequences. Prove both of the following:
+
+\[\limsup(a_n+b_n)\leq\limsup a_n + \limsup b_n \]
+\[\liminf(a_n+b_n)\geq\liminf a_n + \liminf b_n \]
+
+Also show that strict inequalities are possible.
+
+To simplify explanations, define $(c_n)$ where $c_n = a_n + b_n$ for all $n$.
+In addition, let $\overline{A}=\limsup a_n$, $\overline{B}=\limsup b_n$,
+$\underline{A}=\liminf a_n$, and $\underline{B}=\liminf b_n$.
+We can rewrite the statements as
+\[\limsup c_n\leq\overline{A}+\overline{B}\]
+\[\liminf c_n\geq\underline{A}+\underline{B}\]
+
+We start by proving the first statement. We want to show that for all 
+$\varepsilon>0$ there are no subsequences of $(c_n)$ that converge to a value
+greater than
+$\overline{A}+\overline{B}+\varepsilon$. Take any $\varepsilon_1$ such that
+$0<\varepsilon_1<\varepsilon$ and let $\varepsilon_2=\varepsilon-\varepsilon_1$.
+By Problem 2, there are only finitely many values of $n$ such that
+$a_n>\overline{A}+\varepsilon_1$ and finitely many values of $n$ such that
+$b_n>\overline{B}+\varepsilon_2$. Thus, there are only finitely many values
+$n$ such that $c_n = a_n+b_n > (\overline{A}+\varepsilon_1)+
+(\overline{B}+\varepsilon_2) = \overline{A}+\overline{B}+\varepsilon$. Since
+the number of such $n$ values is finite, there are no subsequences of $(c_n)$
+where for all $k$, $c_{n_k} > \overline{A}+\overline{B}+\varepsilon$. Thus
+$\limsup c_n$ is at most $\overline{A}+\overline{B}$.
+
+A similar argument can be used to prove the second statement by way of showing
+that for all $\varepsilon > 0$ there are no subsequences of $(c_n)$ that converge
+to a value less than
+$\underline{A}+\underline{B}-\varepsilon$. Define $\varepsilon_1, \varepsilon_2$
+the same way as above.
+By Problem 2, there are only finitely many values of $n$ such that
+$a_n<\underline{A}-\varepsilon_1$ and finitely many values of $n$ such that
+$b_n<\underline{B}-\varepsilon_2$. Thus, the number of values $n$ where
+$c_n = a_n+b_n < (\underline{A}-\varepsilon_1)+(\underline{B}-\varepsilon_2) =
+\underline{A}+\underline{B}-\varepsilon$ is finite. So there are no subsequences
+$(c_{n_k})$ where for all $k$, $c_{n_k} < \underline{A} + \underline{B}-\varepsilon$,
+which means $\liminf c_n$ is at least $\underline{A} + \underline{B}$.
+
+We can find an example of two sequences $(a_n), (b_n)$ for which the above statements
+are true with strict inequality. Let $a_n = 1+(-1)^n$ and $b_n = -1-(-1)^n$
+for all $n\in\N$. Note that $a_n=2$ for even $n$ and $a_n=0$ for odd $n$, whereas
+$b_n = -2$ for even $n$ and $b_n=0$ for odd $n$. Further, we can see that
+$a_n+b_n=0$ for all values of $n$. Evaluating $\liminf$ and $\limsup$ for these
+sequences is straightforward
+
+\subsection*{Problem 31}
 
 \end{document}
