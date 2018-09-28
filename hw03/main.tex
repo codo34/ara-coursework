@@ -266,8 +266,40 @@ are true with strict inequality. Let $a_n = 1+(-1)^n$ and $b_n = -1-(-1)^n$
 for all $n\in\N$. Note that $a_n=2$ for even $n$ and $a_n=0$ for odd $n$, whereas
 $b_n = -2$ for even $n$ and $b_n=0$ for odd $n$. Further, we can see that
 $a_n+b_n=0$ for all values of $n$. Evaluating $\liminf$ and $\limsup$ for these
-sequences is straightforward
+sequences is straightforward:
+\[
+\def\arraystretch{1.5}
+\begin{array}{rl}
+\limsup a_n &= 2 \\
+\limsup b_n &= 0 \\
+\liminf a_n &= 0 \\
+\liminf b_n &= -2 \\
+\liminf = \limsup = \lim (a_n+b_n) &= 0
+\end{array}
+\]
+We can see that $\limsup(a_n+b_n) = 0 < 2 = \limsup a_n + \limsup b_n$ and that
+$\liminf(a_n+b_n) = 0 > -2 = \liminf a_n + \liminf b_n$, so these sequences
+satisfy the properties above with strict inequality.
 
 \subsection*{Problem 31}
+
+Let $(a_n),(b_n)$ be sequences and suppose $\lim_{n\to\infty}b_n=b$.
+We will prove the following statements:
+\[\limsup (a_n+b_n) = \limsup a_n + b\]
+\[\limsup (a_n\cdot b_n) = \limsup a_n\cdot b \textrm{, provided }a_n\geq0, b_n\geq0.\]
+We start with the first statement. Given that $b_n$ converges to $b$, we know that
+any subsequence $(b_{n_k})$ also converges to $b$ by Lemma 2.1.27. So the limit of
+any subsequence $\lim_{k\to\infty}(a_{n_k}+b_{n_k})=\lim_{k\to\infty}a_{n_k}+b$.
+We can see that the largest value to which any subsequence of $(a_n+b_n)$ converges 
+is equal to the largest value to which any subsequence of $(a_n)$ converges, plus $b$.
+In other words, $\limsup (a_n+b_n) = \limsup a_n + b$.
+
+Now we consider the second limit, which follows a similar argument. We still know
+that any subsequence $(b_{n_k})$ converges to $b$, so
+$\lim_{n\to\infty}(a_{n_k}\cdot b_{n_k})=\lim_{n\to\infty}a_{n_k}\cdot b$.
+Keeping in mind that $a_n, b_n \geq 0$, we can conclude that the largest
+value to which the product of the sequences converge is equal to the largest value
+to which $a_n$ converges, times $b$. In other words, we have shown that 
+$\limsup (a_n\cdot b_n) = \limsup a_n\cdot b$.
 
 \end{document}
