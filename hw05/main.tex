@@ -1,0 +1,188 @@
+\documentclass[11pt]{article}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\P}{{\cal P}}
+
+\pagestyle{empty}
+
+
+\begin{document}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{9pt}
+
+
+\section*{Math 351: Homework 5  Due Friday October 19 }
+
+\bigskip
+
+\subsection*{Sections 3.2 and 3.3}
+
+Section 3.2 Exercises (pg 112-113) work 6,7,8,9,10
+
+\begin{enumerate}
+\setcounter{enumi}{5}
+
+\item Let $A\subsetneq\R$. When is $A^\circ = \overline{A}$?
+
+We know that $A^\circ\subseteq A\subseteq \overline{A}$, so 
+$A^\circ = \overline{A} = A$ in this case. We have previously shown that
+$A=A^\circ$ if and only if $A$ is open, and that 
+$A=\overline{A}$ if and only if $A$ is closed. So, $A$
+must be both open and closed. The only sets for which this can be true are
+$\R$ and $\varnothing$, and since we have $A\subsetneq \R$, the only case
+where this is possible is $A=\varnothing$.
+
+\item Is there a set whose interior is empty and whose closure is $\R$?
+
+The set $\Q$ satisfies this property. Pick any $q\in\Q$ and fix it. For
+any $\varepsilon>0$, the open ball $B(q,\varepsilon)$ will contain a
+nonrational real number due to the order completeness of $\R$. Thus,
+$\Q$ contains no interior points. In addition, we know that $\R$ consists
+of all values to which sequences of rational numbers converge, so every
+real number is the limit of some sequence in $\Q$. Thus every $x\in\R$
+is a closure point of $\Q$. So $\Q$ is a set whose interior is empty and
+whose closure is $\R$.  
+
+\item Find the closure and interior of each of the following sets:
+
+\begin{enumerate}
+\item{$A=[0,1)\cup(1,2)$}
+
+$\overline{A}=[0,2],\ A^\circ=(0,1)\cup(1,2)$
+\item{$\N$}
+
+$\overline{\N}=\N,\ \N^\circ=\varnothing$
+\item{$A=\{\frac{1}{n}:n\in\N\}$}
+
+$\overline{A}=A\cup0,\ A^\circ=\varnothing$
+\item{$A=\Q\cap(0,1)$}
+
+$\overline{A}=[0,1],\ A^\circ=\varnothing$
+\item{$A=\R\setminus\Q$}
+
+$\overline{A}=\R,\ A^\circ=\varnothing$ 
+
+Recall that $\Q$ is dense in $\R$, so $A$ has no interior points.
+\item{$A=\{\frac{p}{2^n}:n\in\N,p=0,\ldots,2^n\}$}
+
+$\overline{A}=\R,\ A^\circ=\varnothing$
+
+$A$ is the set of dyadic rationals in $[0,1]$. In Example 2.2.6, we define
+a function $d:[0,1]\to\{0,1\}^\N$ that maps every real number in $[0,1]$
+to a sequence of dyadic intervals of increasing rank. For any 
+$x\in [0,1]$, if we take the sequence
+of the left endpoints of these intervals determined by $d(x)$,
+this sequence will be a subset
+of our set $A$ and will converge to $x$.
+\end{enumerate}
+\item{Prove or disprove $\overline{(A\cup B)}=\overline{A}\cup\overline{B}$.}
+
+We will show that these sets are equal by showing that they are subsets
+of one another. First, let $x\in\overline{(A\cup B)}$. This means that
+$x$ is a closure point of $A\cup B$. Thus there exists some sequence 
+$a_n\in(A\cup B)$ that converges to $x$. There are two possible cases:
+either $a_n$ is a subset of A or B, or $(a_n)$ contains elements from $A$
+and elements from $B$. If it is the former case, assume without loss of
+generality that $(a_n)\subseteq A$ (since the following argument is also
+valid for $B$). Thus, $x$ is also a closure point of $A$, so
+$x\in\overline{A}\subseteq(\overline{A}\cup\overline{B})$. In the case
+where $(a_n)$ contains elements from both $A$ and $B$, take either the
+subsequence $(a_n)\cap A$ or $a_n\cap B$, whichever has an infinite
+number of elements. We know that if $a_n\to x$, any subsequence of $a_n$
+also converges to $x$. Thus we can find a sequence in either $A$ or $B$
+that converges to $x$, so $x$ is a closure point of either $A$ or $B$, and it
+follows that $x\in(\overline{A}\cup\overline{B})$. 
+Since any $x$ in
+$\overline{A\cup B}$ is in $\overline{A}\cup\overline{B}$,
+$\overline{A\cup B}\subseteq(\overline{A}\cup\overline{B})$.
+
+Now take $x\in(\overline{A}\cup\overline{B})$. This means $x$ is either
+a closure point of $A$ or a closure point of $B$, so there is some sequence
+$(a_n)$ of terms in either $A$ or $B$ that converges to $x$. Each $a_n$ would
+also be in $A\cup B$, however, which means that $x$ is also a closure point 
+of $A\cup B$, so $x\in\overline{A\cup B}$.
+Hence $(\overline{A}\cup\overline{B})\subseteq\overline{A\cup B}$.
+Since we have both sets as subsets of one another, the sets must be equal.
+
+\item{Prove or disprove $\overline{(A\cap B)}=\overline{A}\cap\overline{B}$.}
+
+We disprove this by providing a counterexample.
+Let $A=(0,1)$ and $B=(1,2)$. $\overline{(A\cap B)} = \overline{(0,1)\cap(1,2)}
+= \overline{\varnothing} = \varnothing$.
+But, $\overline{A}\cap\overline{B} = \overline{(0,1)}\cap\overline{(1,2)}
+= [0,1]\cap[1,2] = {1} \neq \varnothing$.
+
+\end{enumerate}
+
+Section 3.3 Exercises (pg 116-117) work 7
+
+\subsection*{Interiors}
+
+For $\R^n$, what is the relationship between $A^\circ$ and $({\bar A})^\circ$? Are they equal? One contained in the other? Prove any claim you make. 
+
+\subsection*{Compactness 1}
+
+Suppose $K$, $F$ are subsets of $\R$, and that $K$ is compact and $F$ is closed. Are the following definitely compact, definitely closed, or possibly neither.
+
+a)\quad $K\cap F$
+
+b)\quad $\overline{K^c \cup F^c}$   
+
+c)\quad $K\backslash F$
+
+d)\quad $\overline{K \cap F^c}$
+
+
+\subsection*{Compactness 2}
+
+Consider the set comprised of closed intervals
+
+$$\textstyle  \ldots  \cup [{1\over 6}, {1\over 5}] \cup [{1\over 4},{1\over 3}] \cup  [{1\over 2},1] $$
+
+That is, let $I_n= [{1\over 2n},{1\over 2n-1}]$ for $n\in \N$ and take $B=\bigcup_{n\in\N} I_n $. 
+
+a) Show $B$ is bounded but not closed. 
+
+b) Find a sequence $\{b_n\}\subset B$ that converges to a point not contained in $B$.
+
+c) Find an open cover of $B$ that cannot be reduced to a finite open cover. 
+
+d) Show $\tilde B = B\cup\{0\}$ is compact.
+
+e) How does the addition of the point $\{0\}$ undo your answers in (b) and (c)? That is, why can't you make similar examples that work for $\tilde B$?
+
+
+\subsection*{Compactness 3}
+
+Prove that any open cover of any closed set can be reduced to a countable open cover. 
+
+(\sl HINT: Let $B$ be a closed set, and define $B_n= B\cap [n-1,n]$ for $n\in\Z$. Then $B_n$ is compact.\rm) 
+
+Use this to work section 3.4 exercise 2 (page 122). 
+
+\subsection*{Compactness 4}
+
+Work section 3.4 exercise 3 (page 122). 
+
+(\sl HINT: Suppose not. Then $\forall \delta>0$, there is an interval $I$ of length $\delta$ with $I\cap E \not= \emptyset$ and $I\cap E \not= \emptyset$. Use this to construct convergent $e_n$ in $E$ and $f_n$ in $F$, with $|e_n-f_n|\to 0$. )  \rm
+
+
+\subsection*{Compactness 5}
+
+And now for something completely different. Consider the natural numbers $\N$ with the trivial metric (defined in example 3.1.7 on page 107). 
+
+Show that with this metric, the set $\N$ is closed and bounded, but not sequentially compact.
+
+
+
+
+
+\end{document}
