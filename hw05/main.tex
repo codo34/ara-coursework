@@ -336,8 +336,105 @@ in this metric space.
 
 From section 4.1 exercises (pg 143), work 4 and 8. See example 4.1.7.
 
+4. Let $f(x) = \frac{1}{x}$. Show that $f:(-\infty,0)\to\R$ is continuous
+on $(-\infty,0)$.
+
+By the definition, $f(x)=\frac{1}{x}$ is continuous if
+$\forall \varepsilon>0\ \exists\delta>0$ such that
+$|x_1-x_2|<\delta\implies\left|\frac{1}{x_1}-\frac{1}{x_2}\right|<\varepsilon$.
+Pick some $\varepsilon>0$ and fix it. Choosing
+$\delta<\varepsilon x_1 x_2$, will satisfy the definition. Keeping in
+mind that $x_1, x_2 < 0$, we manipulate the inequality:
+
+\[
+\def\arraystretch{2}
+\begin{array}{rl}
+|x_1-x_2|<\delta &\implies |x_1-x_2|<\varepsilon x_1 x_2 \\
+&\implies \frac{|x_2-x_1|}{x_1 x_2}<\varepsilon \\
+&\implies \left|\frac{x_2-x_1}{x_1x_2}\right|<\varepsilon \\
+&\implies \left|\frac{1}{x_1}-\frac{1}{x_2}\right|<\varepsilon.
+\end{array}
+\]
+
+Hence $f$ is continuous on $(-\infty,0)$.
+
+8. Prove, using the $\varepsilon,\delta$ definition, that if
+$f:A\to[0,\infty)$ is continuous, then $\sqrt{f}:A\to[0,\infty)$ is continuous.
+
+From the definition, we take as given that
+$\forall\varepsilon>0\ \exists\delta>0$ such that
+$|x_1-x_2|<\delta\implies|f(x_1)-f(x_2)|<\varepsilon$. What we want to show
+is that 
+$\forall\varepsilon>0\ \exists\delta>0$ such that
+$|x_1-x_2|<\delta\implies\left|\sqrt{f(x_1)}-\sqrt{f(x_2)}\right|<\varepsilon$.
+Pick any $\varepsilon$ and fix it. Now choose some
+$\varepsilon_1<\varepsilon\left(\sqrt{f(x_1)}+\sqrt{f(x_2)}\right)$.
+We know that we can find a $\delta_1$ such that $|x_1-x_2|<\delta_1\implies
+|f(x_1)-f(x_2)|<\varepsilon_1$. So, choose $\delta \leq \delta_1$:
+
+\[
+\def\arraystretch{2}
+\begin{array}{rl}
+|x_1-x_2|<\delta &\implies |x_1-x_2|<\delta_1 \\
+&\implies |f(x_1)-f(x_2)|<\varepsilon_1 \\
+&\implies |f(x_1)-f(x_2)|<\varepsilon\left(\sqrt{f(x_1)}+\sqrt{f(x_2)}\right) \\
+&\implies \frac{|f(x_1)-f(x_2)|}{\sqrt{f(x_1)}+\sqrt{f(x_2)}}<\varepsilon \\
+&\implies \left|\frac{f(x_1)-f(x_2)}{\sqrt{f(x_1)}+\sqrt{f(x_2)}}\right|<\varepsilon \\
+&\implies \left|\left(\sqrt{f(x_1)}-\sqrt{f(x_2)}\right)
+\frac{\sqrt{f(x_1)}+\sqrt{f(x_2)}}{\sqrt{f(x_1)}+\sqrt{f(x_2)}}
+\right|<\varepsilon \\
+&\implies \left|\sqrt{f(x_1)}-\sqrt{f(x_2)}\right|<\varepsilon.
+\end{array}
+\]
+
 \subsection*{Continuity 2}
 
 From section 4.1 exercises (pg 143), work 5.
+
+5.
+
+a) Find an example of a function $f:\R\to\R$ such that there exists only one
+$x\in\R$ for which $f$ is continuous at $x$.
+
+Define $f:\R\to\R$ such that
+\[
+f(x)=\begin{cases}
+    x & x\in\Q \\
+    -x & x\in\R\setminus\Q\\
+\end{cases}
+\]
+
+First we see that $f(0)=0$. 
+For values of $x\in\R$, as $x\to 0$, $|f(x)-0|\to 0$ without fail.
+However, at any other point the function is discontinuous.
+In any $\delta$ neighborhood of $x_1$ we can find both rational and irrational numbers.
+If we choose $\varepsilon<f(x_1)$ it becomes clear that we will always be able
+to find an $x_2$ where $|f(x_1)-f(x_2)|>\varepsilon$.
+
+b) Can you extend this so that $f$ is continuous at exactly $k$ points for
+arbitrary $k$?
+
+Yes. Say we want $f$ to be continuous at only the points
+$x_n$ for $1\leq n\leq k$.
+Define a function $g(x)=\prod_{n=1}^k(x-x_n)$. We can now define $f$ as
+\[
+f(x)=\begin{cases}
+    g(x) & x\in\Q \\
+    -g(x) & x\in\R\setminus\Q
+\end{cases}
+\]
+
+c) What about an example that is continuous on $\Z$ but discontinuous on
+$\R\setminus\Z$?
+
+Define $f$ as 
+\[
+f(x)=\begin{cases}
+    \sin(\pi x) & x\in\Q \\
+    -\sin(\pi x) & x\in\R\setminus\Q
+\end{cases}
+\]
+
+This function will satisfy the property.
 
 \end{document}
