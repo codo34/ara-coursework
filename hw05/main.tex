@@ -20,6 +20,7 @@
 
 
 \section*{Math 351: Homework 5  Due Friday October 19 }
+\subsection*{Jack Ellert-Beck}
 
 \bigskip
 
@@ -124,9 +125,45 @@ But, $\overline{A}\cap\overline{B} = \overline{(0,1)}\cap\overline{(1,2)}
 
 Section 3.3 Exercises (pg 116-117) work 7
 
+\begin{enumerate}
+\setcounter{enumi}{6}
+\item{Find the closure and interior of each of the following sets as
+subsets of $\R^2$.}
+\begin{enumerate}
+\item{$A=\N\times\Q$}
+
+$\overline{A}=\N\times\R,\ A^\circ=\varnothing$
+\item{$A=\Z\times\Z$}
+
+$\overline{A}=A,\ A^\circ=\varnothing$
+\item{$A=\Q\times (0,1)$}
+
+$\overline{A}=\R\times [0,1],\ A^\circ=\varnothing$
+\item{$A=\{(x, \sin (\frac{1}{x})):0<x<\pi\}$}
+
+$\overline{A}=A\cup(\{0\}\times[-1,1]),\ A^\circ=\varnothing$
+
+For every $y\in [-1,1]$
+there is a sequence in $A$ converging to the element $(0,y)$, namely
+the set of all $(x,y)$ where $x$ is a solution to the equation
+$\sin(\frac{1}{x})-y=0$, enumerated in decreasing order of $x$. Thus
+all $(0,y)$ are closure points.
+Also, every point in $A$ is a boundary point of $A$. 
+\end{enumerate}
+\end{enumerate}
+
 \subsection*{Interiors}
 
 For $\R^n$, what is the relationship between $A^\circ$ and $({\bar A})^\circ$? Are they equal? One contained in the other? Prove any claim you make. 
+
+Recall that $A\subseteq\overline{A}$. Thus all interior points of $A$ must
+be elements of $\overline{A}$, and any open balls
+$B(x,\varepsilon)\subseteq A$ are also subsets of $\overline{A}$. It
+follows that all interior points of $A$ are also interior points of 
+$\overline{A}$. So, $A^\circ\subseteq (\overline{A})^\circ$. We cannot,
+however, establish this relationship in the other direction.
+For instance, take $\Q^n$. $(\Q^n)^\circ=\varnothing$ but
+$(\overline{\Q^n})^\circ = (\R^n)^\circ = \R^n \neq \varnothing$.
 
 \subsection*{Compactness 1}
 
@@ -134,11 +171,31 @@ Suppose $K$, $F$ are subsets of $\R$, and that $K$ is compact and $F$ is closed.
 
 a)\quad $K\cap F$
 
+The intersection of a bounded set with any other set will be bounded,
+and any intersection of closed sets will be closed, so
+$K\cap F$ will be closed and bounded, and thus compact by Heine-Borel.
+
 b)\quad $\overline{K^c \cup F^c}$   
 
-c)\quad $K\backslash F$
+This set will definitely be closed as it is the closure of some set.
+However, since $K$ is bounded, $K^c$ will not be bounded, and neither will
+its union with any other set. The closure of this set will be a superset
+of an unbounded set, so it will itself be unbounded, and thus not compact.
+
+c)\quad $K\setminus F$
+
+If $K$ and $F$ are disjoint, then $K\setminus F = K$ is 
+compact.
+However, in the case where $K=[0,1],\ F=[\frac{1}{2},\frac{3}{2}]$,
+we get $K\setminus F = [0,\frac{1}{2})$, which is not closed and 
+therefore not compact. So $K\setminus F$ can be compact but it need not be.
 
 d)\quad $\overline{K \cap F^c}$
+
+Note that $\overline{K\cap F^c}=\overline{K\setminus F}$.
+Since $K\setminus F$ is a subset of $K$, it is definitely bounded.
+The set in question is therefore the closure of a bounded set,
+so it is compact.
 
 
 \subsection*{Compactness 2}
@@ -151,29 +208,113 @@ That is, let $I_n= [{1\over 2n},{1\over 2n-1}]$ for $n\in \N$ and take $B=\bigcu
 
 a) Show $B$ is bounded but not closed. 
 
+Note that, for any $n$, both endpoints of the interval $I_n$ are positive
+numbers less than 1. $B\subseteq [0,1]$, so it is bounded. To show that
+$B$ is not closed, we show that $B^c$ is not open.
+Since $0\notin B,\ 0\in B^c$. Now pick any $\varepsilon>0$ and consider
+the open ball $B(0,\varepsilon)$. Recall that $\lim_{n\to\infty}\frac{1}{n}=0$
+means that $\forall \varepsilon>0\ \exists N$ such that
+$n>N\implies\frac{1}{n}<\varepsilon$. So, it follows that there are an
+infinite number of consecutive $\frac{1}{n}$ in $B(0,\varepsilon)$
+and thus an infinite number of intervals $I_n$ contained in $B(0,\varepsilon)$.
+Hence 0 is not an interior point of $B^c$, so $B^c$ is not open, which means
+$B$ is not closed.
+
 b) Find a sequence $\{b_n\}\subset B$ that converges to a point not contained in $B$.
+
+Define $\{b_n\}_{n\in\N}$ such that $b_n = \frac{1}{\frac{(2n)+(2n-1)}{2}}
+= \frac{1}{2n-\frac{1}{2}}$. Note that for all $n\in\N$, $b_n\in I_n$, so
+${b_n}\subseteq B$. We find the limit of $b_n$:
+$\lim_{n\to\infty}b_n=\lim_{n\to\infty}\frac{1}{2n-\frac{1}{2}}=0$, which is
+not an element of $B$.
 
 c) Find an open cover of $B$ that cannot be reduced to a finite open cover. 
 
+Define the interval
+$I'_n = (\frac{1}{2n}-\frac{1}{100n}, \frac{1}{2n-1}+\frac{1}{100n})$.
+Note that for all $n\in\N$, $I'_n$ covers $I_n$ and does not cover any
+$I_k$ for $k\neq n$. Let $G=\bigcup_{n\in\N}I'_n$. Since $G$ is a union
+of open sets, $G$ is open, so $G$ is an open cover of $B$. Removing any
+$I'_n$ from $G$ leaves $I_n$ uncovered, so $G$ cannot be reduced to a 
+finite open cover.
+
 d) Show $\tilde B = B\cup\{0\}$ is compact.
 
+We previously showed that $B$ is bounded, so $\tilde B$ is bounded since
+it adds a finite number of elements to $B$. We will show that $\tilde B$ is
+closed by showing that $\tilde B^c$ is open. We can write $\tilde B^c=
+(-\infty,0)\cup(1,\infty)\cup
+\bigcup_{n\in\N}\left(\frac{1}{2n+1},\frac{1}{2n}\right)$. This is a union
+of open sets and is thus open, so $\tilde B$ is closed. By Heine-Borel,
+$\tilde B$ is thus compact.
+
 e) How does the addition of the point $\{0\}$ undo your answers in (b) and (c)? That is, why can't you make similar examples that work for $\tilde B$?
+
+In part (b), 0 was the only value outside of $B$ where we could construct
+a sequence contained in $B$ that converges to it, because it was the only
+boundary point of $B^c$. In part (c), we can still construct open covers
+of $\tilde B$. However, due to the argument from part (a), any open set
+containing 0 will also contain an infinite number of $I_n$. So any open
+cover of $\tilde B$ can be reduced to the cover that includes whatever
+open interval was used to cover 0, plus the open intervals
+used to cover the finitely many intervals $I_n$ that haven't already been
+covered.
 
 
 \subsection*{Compactness 3}
 
-Prove that any open cover of any closed set can be reduced to a countable open cover. 
+Prove that, given a bounded open set $A$ and an $\varepsilon > 0$,
+there exists a finite union of closed intervals $\bigcup C_n \subseteq A$
+such that $A\setminus\bigcup C_n$ does not contain any balls of radius
+$\varepsilon$.
 
-(\sl HINT: Let $B$ be a closed set, and define $B_n= B\cap [n-1,n]$ for $n\in\Z$. Then $B_n$ is compact.\rm) 
-
-Use this to work section 3.4 exercise 2 (page 122). 
+Let $a$ be a lower bound of $A$ and $b$ be an upper bound of $A$. It follows
+that $A\subseteq(a-100,b+100)$. So, the set $G=[a-100,b+100]\cap A^c$
+is compact, as it is of the form $K\cap F$ from \textbf{Compactness 1}.
+We can cover $G$ with $\varepsilon$ balls, and, since $G$ is compact,
+reduce this cover to a finite cover $B=\bigcup B_n$. Now consider
+$B^c\cap[a-100,b+100]$. Since $B$ is a finite collection of open balls
+of fixed size, this set is a finite union of closed intervals,
+$\bigcup C_n$. Further, this set is a subset of $A$, since its complement
+in $[a-100,b+100]$ covers $A$'s complement in the same interval.
+Now, notice that if there is a ball of radius epsilon in
+$A\setminus \bigcup C_n$, it would have to be disjoint from $G$ but would
+be part of the cover $B$, which means we can still cover $G$ without that ball
+and repeat the construction with a modified cover.
+Hence we can construct $\bigcup C_n$ such that $A\setminus\bigcup C_n$
+contains no balls of radius $\varepsilon$.
 
 \subsection*{Compactness 4}
 
 Work section 3.4 exercise 3 (page 122). 
 
-(\sl HINT: Suppose not. Then $\forall \delta>0$, there is an interval $I$ of length $\delta$ with $I\cap E \not= \emptyset$ and $I\cap E \not= \emptyset$. Use this to construct convergent $e_n$ in $E$ and $f_n$ in $F$, with $|e_n-f_n|\to 0$. )  \rm
+Let $E$ and $F$ be two disjoint nonempty compact sets in $\R$. We will show
+that there exists a $\delta>0$ such that for every interval $I$, if
+$|I|<\delta$ then $I\cap E = \varnothing$ or $I\cap F=\varnothing$.
+Suppose for contradiction that this is false. Then for all $\delta>0$,
+there exists an interval $I$ with $|I|<\delta$ and $I\cap E\neq \varnothing,\
+I\cap F\neq \varnothing$. We will construct sequences $\{e_n\}$ and
+$\{f_n\}$ by considering points in $I$ for different values of $\delta$.
+Pick some $\delta_1$ and find an interval $I_1$ satisfying the conditions.
+This interval will contain some $e_1\in E$ and $f_1\in F$. Now pick any
+positive $\delta_2<\delta_1$ and find a corresponding $I_2$, containing
+some $e_2$ and $f_2$. Continuing this process, we create sequences 
+$\{e_n\}$ and $\{f_n\}$ where each $e_n$ and $f_n$ is in $I_n$, and
+$|I_n|\to0$. It follows that $0\leq|e_n-f_n|\leq|I_n|$, so $|e_n-f_n|\to0$ by
+the Squeeze Property. Since $E$ and $F$ are compact, they are bounded, so
+$e_n$ and $f_n$ converge, and in fact converge to the same $L$. But $E$ and 
+$F$ are also closed, and $L$ is a closure point of both $E$ and $F$, so
+$L$ is in $E$ and $F$, which contradicts our assumption that they are
+disjoint sets.
 
+The property is not necessarily true if $E$ and $F$ are closed but not
+compact. 
+
+Let $E = \bigcup_{n\in\N}[2n-1, 2n]$ and
+$F = \bigcup_{n\in\N}[2n+\frac{1}{3n}, 2n+\frac{1}{2}]$. For both sets,
+their complements are unions of open sets, so $E$ and $F$ are both closed.
+For any $\delta>0$, find $n$ such that $\frac{1}{3n}<\delta$. Now take
+$I=[2n,2n+\frac{1}{3n}]$, which contains elements from both $E$ and $F$. 
 
 \subsection*{Compactness 5}
 
@@ -181,8 +322,22 @@ And now for something completely different. Consider the natural numbers $\N$ wi
 
 Show that with this metric, the set $\N$ is closed and bounded, but not sequentially compact.
 
+Define $d(x,y)$ to be the trivial metric, where $d(x,y)=0 \iff x=y$ and
+$d(x,y) = 1$ otherwise.
+Since $\N$ is the universal set of the metric space in this case, $\N$
+is closed. Note that for any $x,y\in\N$, $d(x,y)\leq1$, so $\N$ is bounded.
+Now consider the sequence $\{a_n\}$ where $a_n = n$. For any choice of
+$\{n_k\}$, the elements of $\{a_{n_k}\}$ fail to get closer to one another
+than $\varepsilon$ when $\varepsilon<1$. Thus there is no subsequence of
+$\{a_n\}$ which converges, so $\N$ cannot be sequentially compact
+in this metric space.
 
+\subsection*{Continuity 1}
 
+From section 4.1 exercises (pg 143), work 4 and 8. See example 4.1.7.
 
+\subsection*{Continuity 2}
+
+From section 4.1 exercises (pg 143), work 5.
 
 \end{document}
