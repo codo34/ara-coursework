@@ -1,0 +1,111 @@
+\documentclass[11pt]{article}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\P}{{\cal P}}
+
+\pagestyle{empty}
+
+
+\begin{document}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{9pt}
+
+
+\section*{Math 351: Homework 7  Due Friday November 2}
+\subsection*{Jack Ellert-Beck}
+
+\bigskip
+
+\subsection*{Problem 1}
+
+Suppose $I$ is a bounded closed interval and $f:I\to\R$ is continuous on
+$I$. We will prove that $f(I)$ is bounded. Since $I$ is a bounded closed
+interval on $R$, it is a compact subset of $R$. By the Extreme Value
+Theorem, $f$ has a maximum and a minimum on $I$. This means that 
+$f(I)$ has a maximum and minimum value, and thus it is bounded.
+
+Suppose $I$ is a bounded open interval and $f:I\to\R$ is continuous on $I$.
+We will show a counterexample to disprove that $f(I)$ is bounded.
+Let $I$ be $(0,1)$ and define $f(x) = \frac{1}{x}$. $I$ is a bounded open
+interval and we have previously shown $f$ is continuous on $I$. However,
+$f(x)\to\infty$ as $x\to0$, so $f(I) = (1,\infty)$ is not bounded.
+
+Suppose $I$ is a bounded open interval and $f:I\to\R$ is uniformly
+continuous on $I$. We will prove that $f(I)$ is bounded. It will
+suffice to show that $f(I)$ must be bounded from above, since to show
+that $f(I)$ is bounded from below is the same as showing that
+$-f(I)$ is bounded from above.
+So, assume for contradiction that $f(I)$ is not bounded from above.
+This means that $\forall M\in\R\ \exists e\in f(I)$ such that $e>M$.
+Note that for any such $e$ there is some $x\in I$ where $f(x)=e$.
+Now, by the definition of uniform continuity,
+$\forall\varepsilon>0\ \exists\delta>0$ such that
+$x,y\in I$ and $|x-y|<\delta\implies|f(x)-f(y)|<\varepsilon$.
+Pick any $\varepsilon$ and fix it. Now find a corresponding $\delta$.
+Now, let $a,b$ be the endpoints of $I$ such that $I=(a,b)$. Note that
+at least one of $f((a,\frac{a+b}{2}])$ or $f([\frac{a+b}{2},b))$ is
+not bounded. (If both subintervals were bounded, then $\sup I$ would
+be a real number
+and be equal to the larger of the two supremums of the subintervals.)
+If the image of the former interval under $f$ is unbounded,
+let $a_1=a$ and $b_1=\frac{a+b}{2}$.
+If not, then let $a_1=\frac{a+b}{2}$ and $b_1=b$. Now let $I_1=(a_1,b_1)$.
+Again, we can divide $I_1$ in half and choose whichever half has an unbounded
+image under $f$
+to be $I_2$. Continuing this pattern, note that $(a_n-b_n)=\frac{a-b}{2^n}\to0$
+as $n\to\infty$, and that for all $I_n$, $f(I_n)$ is unbounded.
+Thus there is some $I_n$ where $(a_n-b_n)<\delta$. Now pick $y=a_n$ and let
+$M=f(y)+\varepsilon$. By the fact that $I_n$ is unbounded, there is some
+$x\in I_n$ such that $f(x)>f(y)+\varepsilon$. But, $x$ is in $I_n$,
+so we have found a case where $|x-y|<\delta$ and 
+$|f(x)-f(y)|>\varepsilon$, a contradiction. So $f(I)$ must be bounded from
+above, and following the same argument with $-f(I)$ shows that
+$f(I)$ is also bounded from below, so $f(I)$ is bounded.
+
+Suppose $A$ is a countable union of bounded open intervals and $f:A\to\R$
+is uniformly continuous on $A$. Prove or disprove that $f(I)$ is bounded.
+
+\subsection*{Problem 2}
+
+Suppose $a_n$ and $b_n$ are Cauchy sequences.
+
+Prove or disprove: $|a_n-b_n|$ is Cauchy.
+
+Prove or disprove: $(-1)^na_n$ is Cauchy.
+
+Prove or disprove: if $a_n\neq0$ for all $n$, then $\frac{1}{a_n}$ is Cauchy.
+
+Prove or disprove: if $a_n>0.001$ for all $n$, then $\frac{1}{a_n}$ is Cauchy.
+
+\subsection*{Problem 3}
+
+A function $f:\R\to\R$ is monotone if $x\leq y$ makes $f(x)\leq f(y)$.
+Show that a monotone function can have at most a coutnable number of
+points of discontinuity.
+
+\subsection*{Section 5.1}
+
+\begin{enumerate}
+\setcounter{enumi}{3}
+
+\item{Prove a thing}
+
+\item{Prove a thing}
+
+\item{Give an example}
+
+\item{Prove a thing}
+
+\item{Construct a function}
+
+\end{enumerate}
+
+\end{document}
