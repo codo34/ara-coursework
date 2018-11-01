@@ -71,25 +71,59 @@ above, and following the same argument with $-f(I)$ shows that
 $f(I)$ is also bounded from below, so $f(I)$ is bounded.
 
 Suppose $A$ is a countable union of bounded open intervals and $f:A\to\R$
-is uniformly continuous on $A$. Prove or disprove that $f(I)$ is bounded.
+is uniformly continuous on $A$. We will provide a counterexample to show
+that $f(A)$ need not be bounded. Let
+$A=\ldots\cup (-2, -1) \cup (0, 1) \cup (2, 3) \cup\ldots$ and $f(x)=x$.
+We can show that $f$ is uniformly continuous on $\R$. Pick any $\varepsilon>0$.
+If we choose $\delta=\frac{\varepsilon}{2}$, we can see that $|x-y|<\delta
+\implies |f(x)-f(y)|=|x-y|<\frac{\varepsilon}{2}<\varepsilon$. Since
+$f$ is uniformly continuous on $\R$, it is uniformly continuous on
+$A\subseteq\R$. However, we can see that $f(I)$ is not bounded. If we
+choose any $M>0$, we know that $f(M+1)=M+1>M$. Note that
+at least one of $M+1, M+2, M+2.1$, and $M+3.1$ will be in $A$. Thus we
+can always find an $x\in A$ where $f(x)>M$. So in this case, 
+$f$ is uniformly continuous on a countable union of bounded open intervals
+and $f(I)$ is not bounded.
 
 \subsection*{Problem 2}
 
 Suppose $a_n$ and $b_n$ are Cauchy sequences.
 
 Prove or disprove: $|a_n-b_n|$ is Cauchy.
+Since both sequences are Cauchy, we know that $a_n$ converges to
+some $A\in\R$ and $b_n$ converges to a value $B\in\R$.
+So, $\forall\varepsilon>0\ \exists N_1>0$ such that
+$n>N_1\implies |a_n-A|<\varepsilon$ and $n>N_2\implies|b_n-B|<\varepsilon$.
+Pick an $\varepsilon$ and fix it. Find any $N_1,N_2$ corresponding to
+$\frac{\varepsilon-(A-B)}{2}$ and set $N>\max \{N_1,N_2\}$. Now we have
+$|a_n-b_n|=|a_n-A-b_n+B+A-B|=|(a_n-A)+(B-b_n)+(A-B)|<\varepsilon-(A-B)+(A-B)
+=\varepsilon$. Thus $|a_n-b_n|$ converges and is therefore Cauchy.
 
 Prove or disprove: $(-1)^na_n$ is Cauchy.
+Let $a_n=1$ This clearly converges and thus is Cauchy. 
+However, $(-1)^na_n$ does not converge. To see why, pick
+$\varepsilon=\frac{1}{2}$. For any choice of $N$,
+$|a_{N+2}-a_{N+1}|=2>\varepsilon$. Thus $(-1)^na_n$ is not Cauchy.
 
 Prove or disprove: if $a_n\neq0$ for all $n$, then $\frac{1}{a_n}$ is Cauchy.
+Let $a_n=\frac{1}{2^n}$. This sequence converges to 0, and for all
+$n$, $a_n>0$. So $a_n$ is Cauchy. However, $\frac{1}{a_n}=2^n\to\infty$.
+So, $\frac{1}{a_n}$ does not converge, and this counterexample disproves
+the proposition.
 
 Prove or disprove: if $a_n>0.001$ for all $n$, then $\frac{1}{a_n}$ is Cauchy.
+If $a_n>0.001$ for all $n$ and $a_n$ is Cauchy, then $a_n$ converges
+to some $L>0.001$. Hence $\frac{1}{a_n}<1000$ and, by the algebraic properties
+of limits, $\frac{1}{a_n}$ converges to $\frac{1}{L}$, and we conclude that
+$\frac{1}{a_n}$ is Cauchy.
 
 \subsection*{Problem 3}
 
 A function $f:\R\to\R$ is monotone if $x\leq y$ makes $f(x)\leq f(y)$.
-Show that a monotone function can have at most a coutnable number of
+Show that a monotone function can have at most a countable number of
 points of discontinuity.
+
+
 
 \subsection*{Section 5.1}
 
@@ -105,6 +139,22 @@ points of discontinuity.
 \item{Prove a thing}
 
 \item{Construct a function}
+
+\end{enumerate}
+
+\subsection*{Section 5.2}
+
+\begin{enumerate}
+\item{Who knows}
+
+\item{not me}
+
+\item{yikes}
+
+\setcounter{enumi}{7}
+\item{8 really}
+
+\item{9 huh}
 
 \end{enumerate}
 
