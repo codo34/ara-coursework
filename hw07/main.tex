@@ -123,6 +123,30 @@ A function $f:\R\to\R$ is monotone if $x\leq y$ makes $f(x)\leq f(y)$.
 Show that a monotone function can have at most a countable number of
 points of discontinuity.
 
+First, consider the function $f(x)=\lfloor x\rfloor$ as an example of
+a monotone function with a countably infinite number of points of
+discontinuity. So, clearly a monotone function can have an infinite number of
+discontinuities.
+
+In order to show this for $\R$, we will first show that $f$ must have
+at most a countable number of discontinuities on the interval
+$[a,b]$.
+At a point of discontinuity $c\in[a,b]$ we have that
+$\exists\varepsilon>0$ such that $\forall\delta>0$,
+$|x-c|<\delta$ and $|f(x)-f(c)|>\varepsilon$. Note that every time we have
+a discontinuity, the value of $f$ can only jump up, because $f$ is
+monotone and also defined on all of $[a,b]$.
+Now, pick a discontinuity point $c$ and find a corresponding
+$\varepsilon$ as per the definition. There must be a finite number of jumps
+of size $\varepsilon$ on $[a,b]$ because the set $f([a,b])$ is bounded.
+We can find at most a finite set of discontinuities bigger than
+$\varepsilon$ for
+any value of $\varepsilon$. So, the set of all discontinuous points on
+$[a,b]$ is a union of finite sets, so it is at most countable.
+We can cover $\R$ with a countable union of bounded closed sets,
+each containing a countable number of discontinuities, so the total
+set of all discontinuities is a countable union of countable sets,
+which itself must be countable.
 
 
 \subsection*{Section 5.1}
@@ -130,31 +154,150 @@ points of discontinuity.
 \begin{enumerate}
 \setcounter{enumi}{3}
 
-\item{Prove a thing}
+\item{Prove that $f$ is continuous on $[-1,1]$, but $f$ is not differentiable
+at $x=0$ where $f:[-1,1]\to\R$ is defined by:}
+\[f(x)=\begin{cases}
+        x\sin(1/x)  & x\neq0\\
+        0           & x=0
+\end{cases}
+\]
 
-\item{Prove a thing}
+To show that $f$ is continuous on $[-1,1]$, we can show that for any sequence
+$(a_n)$ in $[-1,1]$, $a_n\to x\implies f(a_n)\to f(x)$.
+Pick any sequence $(a_n)$ in the domain and call its limit $L$. Then
+$\lim_{n\to\infty}f(a_n)=\lim_{n\to\infty}a_n\sin(1/a_n)=
+(\lim_{n\to\infty}a_n)\cdot(\lim_{n\to\infty}\sin(1/a_n))=
+L\cdot\lim_{n\to\infty}\sin(1/a_n)$. Since $\sin(x)$ is continuous and
+$1/x$ is continuous, their composition is continuous, which means that
+$\lim_{n\to\infty}\sin(1/a_n)=\sin\left(\frac{1}{\lim_{n\to\infty}a_n}\right)=
+\sin(1/L)$. So, $\lim_{n\to\infty}f(a_n)=L\cdot(1/L)=f(L)$ and we conclude
+that $f(x)$ is continuous.
 
-\item{Give an example}
+However, we can show that $f$ is not differentiable at 0 by showing that
+$f$ is not locally linear near 0. We want to try to write
+$f(x)=0+M\cdot x+o(x)$ for all $x\in B(0,\varepsilon)$ and $\varepsilon>0$.
+We know that $f(x)=x$ is continuous, so we can write
+$f(x)=x\sin(1/x)=(M_1\cdot x+o(x))(\sin(1/x))=M_1\cdot x\sin(1/x)+o(x)\sin(1/x)
+=M_1\cdot x\sin(1/x)+o(x)$. However $\sin(1/x)$ is not continuous and thus
+not differentiable at 0, so it is not locally linear near 0, so
+we cannot simplify this expression to the desired form. Thus,
+$f$ is not differentiable at 0.
 
-\item{Prove a thing}
 
-\item{Construct a function}
+\item{Prove that $g$ is differentiable on $(-1,1)$ but $g'$ is not
+continuous at $x=0$ where $g$ is defined by:}
+\[f(x)=\begin{cases}
+        x^2\sin(1/x)    & x\neq0\\
+        0               & x=0
+\end{cases}
+\]
+
+Ran out of time to figure this one out. 
+I'm confused because, what does it mean for $g'$ to not be continuous at a 
+point if it is defined at that point? I would assume it means that
+the left-sided limit and the right-sided limit of $g'$ are different.
+But doesn't that mean $g$ is not differentiable at that point? I
+had trouble figuring out what I can do to prove anything here.
+
+\item{Give an example of a continuous invertible function on $(0,1)$ that
+is not differentiable.}
+
+Let $f:(0,1)\to\R$ be defined by
+\[f(x)=\begin{cases}
+        x & x\leq\frac{1}{2}\\
+        2x-\frac{1}{2} & x>\frac{1}{2}
+\end{cases}
+\]
+
+Note that at $x=\frac{1}{2}$ the left-sided derivative is 1, but the
+right-sided derivative is 2, so $f$ is not differentiable. But the inverse
+of $f$ is well-defined:
+\[f(x)=\begin{cases}
+        x & x\leq\frac{1}{2}\\
+        \frac{1}{2}x+\frac{1}{4} & x>\frac{1}{2}
+\end{cases}
+\]
+\item{Prove that a continuous invertible function defined on a closed
+or open interval is strictly monotone.}
+
+Let $f$ be a continuous invertible function and assume for contradiction that
+$f$ is not strictly monotone. This means that there exist some
+$a<b<c$ in the domain such that $f(a)\leq f(b)$ and $f(c)\leq f(b)$ or where
+$f(a)\geq f(b)$ and $f(c)\geq f(b)$. We can assume the former case is true
+without losing generality. In addition, we consider the case where
+$f(a)\leq f(c)$. By the Intermediate Value Theorem, there exists some
+$a'\in[a,b]$ such that $f(a')=f(c)$ since $f(c)\in[f(a),f(b)]$.
+But, if $f(a')=f(c)$ then $f$ is not one-to-one, so $f$ is not invertible,
+a contradiction. So continuous invertible functions must be
+strictly monotone.
+
+\item{Let $n\in\N$. Construct a function that is $n$ times differentiable
+on an interval but fails to be $n+1$ times differentiable at a point in
+the interval.}
+
+Define $f:[0,\infty)\to\R$ as $f(x)=x^{\frac{1}{2}+n}$. We can differentiate
+$f$ $n$ times on $[0,\infty)$, and
+$f^N(x)=\left(\Pi_{i=1}^{n}(\frac{1}{2}+i)\right)x^{\frac{1}{2}}$.
+However, $x^\frac{1}{2}$ is not differentiable at $x=0$.
 
 \end{enumerate}
 
 \subsection*{Section 5.2}
 
 \begin{enumerate}
-\item{Who knows}
+\item{Let $f:[a,b]\to\R$ be a function. Suppose that $f$ is continuous on
+$[a,b]$ and differentiable on $(a,b)$. Show that if $f'(x)\neq0$ for all
+$x\in(a,b)$, then $f$ is one-to-one.}
 
-\item{not me}
+We prove this by proving the contrapositive. Assume $f$ is not one-to-one,
+which means that $\exists x<y\in(a,b)$ such that $f(x)=f(y)$.
+By Rolle's Theorem, there must be a $c\in(x,y)$ such that $f'(c)=0$.
+So we have shown the contrapositive, and thus the original statement
+is true.
 
-\item{yikes}
+\item{Let $f,g:[a,b]\to\R$ be functions that are continuous on $[a,b]$ and
+differentiable on $(a,b)$. Show that if $f'(x)=g'(x)$ for all $x\in(a,b)$
+then there exists $c\in\R$ such that $f(x)=g(x)+c$ for all $x\in[a,b]$.}
+
+Since $f'(a)=g'(a)$ then $f$ and $g$ are locally linear near $a$ with the
+same slope $M$. This means that $f(x)=f(a)+M(x-a)+o(x-a)$ and
+$g(x)=g(a)+M(x-a)+o(x-a)$. Now subtract $g$ from $f$:
+$f(x)-g(x)=f(a)+M(x-a)+o(x-a)-g(a)-M(x-a)-o(x-a)=
+(f(a)-g(a))+o(x-a)-o(x-a)$ Now, as $x\to a$,
+$f(x)-g(x)=(f(a)-g(a))\implies f(x)=g(x)+(f(a)-g(a))$. Note that
+$f(a)-g(a)$ is a constant value, so we have proven the statement true.
+
+\item{Let $f,g:[a,b]\to\R$ be functions that are continuous on $[a,b]$
+and differentiable on $(a,b)$ such that $f(a)=g(a)$. Show that if
+$f'(x)\leq g'(x)$ for all $x\in(a,b)$ then $f(x)\leq g(x)$ for all
+$x\in(a,b)$.}
+
+We will prove this by the contrapositive. Assume that $f(a)=g(a)$ and that
+$\exists c\in[a,b]$ such that $f(c)>g(c)$. Now define $h(x)=g(x)-f(x)$
+and note that $h(a)=0$ and $h(c)=d$ for some value of $d<0$. 
+By the Mean Value Theorem, there is some $c'\in(a,c)$ such that
+$h'(c')=\frac{d-0}{c-a}<0$. Note that $h'(c')=g'(c')-f'(c')$, and we have
+$g'(c')-f'(c')<0\implies g'(c')<f'(c')$. We have shown that if
+$f(x)>g(x)$ for any $x$ then there must be some value where
+$f'(x)>g'(x)$. The contrapositive has been shown to be true, so the original
+proposition is true.
+
 
 \setcounter{enumi}{7}
-\item{8 really}
+\item{Let $f:(a,b)\to\R$ be a differentiable function. Prove that if
+$f'(x)\geq 0$ for all $x\in(a,b)$ then $f$ is an increasing function on
+$(a,b)$. Furthermore, if $f'(x)>0$ for all $x\in(a,b)$, then $f$ is a
+a strictly increasing function on $(a,b)$.}
 
-\item{9 huh}
+We will prove this by contraposition. Assume that $\exists x<y\in(a,b)$
+such that $f(x)>f(y)$, and we will show that there is some $c$ where
+$f'(c)<0$. By the Mean Value Theorem, we can see that $\exists c\in(x,y)$
+such that $f'(c)=\frac{f(y)-f(x)}{y-x}$. Since $y>x$ and $f(y)<f(x)$,
+$f'(c)$ is negative. So we have shown the contrapositive to be true,
+and we conclude that the original statement is true.
+
+\item{Prove that the function $g:(-1,1)\to\R$ given by $g(x)=\sqrt[3]{x}$
+is not differentiable at 0.}
 
 \end{enumerate}
 
