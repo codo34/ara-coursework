@@ -1,0 +1,135 @@
+\documentclass[11pt]{article}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\P}{{\cal P}}
+
+\pagestyle{empty}
+
+
+\begin{document}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{9pt}
+
+
+\section*{Math 351: Homework 8  Due Friday November 16}
+\subsection*{Jack Ellert-Beck}
+
+\bigskip
+
+\section*{Invitation to Real Analysis}
+
+\subsection*{Section 6.1}
+
+Exercise 7: Let $f:[a,b]\to\R$ be a continuous function. Suppose that
+$f(x)\geq0$ for all $x\in[a,b]$ and $\int_a^bf=0$. Show that $f(x)=0$
+for all $x\in[a,b]$.
+
+Assume that there is some $c\in[a,b]$ where $f(c)>0$. Now pick any $0<\varepsilon<f(c)$.
+By the continuity of $f$, we can find a $\delta$ such that
+$|x-c|<\delta\implies|f(x)-f(c)|<\varepsilon$. So, pick such a $\delta$. Notice
+that $f(c-\delta)>f(x)-\varepsilon>0$ and $f(c+\delta)>f(x)-\varepsilon>0$.
+Now define the function
+\[
+g(x)=\begin{cases}
+        0 & a\leq x<c-\delta \\
+        f(c)-\varepsilon & c-\delta\leq x\leq c+\delta \\
+        0 & c+\delta<b
+    \end{cases}
+\]
+We can see that $\int_a^bg=2\delta(f(c)-\varepsilon)>0$, and that $f(x)\geq g(x)$ for
+all $x\in[a,b]$. So, $\int_a^bf\geq\int_a^bg>0$, a contradiction. Thus we conclude
+that $f(c)\ngtr0$ for any $c$, so $f(x)=0$ for all $x\in[a,b]$.
+ 
+\subsection*{Section 6.2}
+
+Exercise 1: Let $f:[a,b]\to\R$ be a continuous function. Show that there exists
+$c\in(a,b)$ such that
+\[ f(c)=\frac{1}{b-a}\int_a^bf \]
+
+First define the function
+\[ g(x) = \int_a^xf(t)dt \]
+and note that $g$ is continuous on $[a,b]$ and differentiable on $(a,b)$.
+So, by the Mean Value Theorem, there exists a $c\in(a,b)$ such that
+$g'(c)=\frac{g(b)-g(a)}{b-a}$. Now, by the Fundamental Theorem of Calculus, we have
+$g'(c)=f(c)$, and we can rewrite the right hand side as well, giving the equation
+$f(c)=\frac{\int_a^bf-\int_a^af}{b-a}=\frac{1}{b-a}(\int_a^bf-0)=\frac{1}{b-a}\int_a^bf$
+for some $c\in(a,b)$.
+
+\subsection*{Section 8.2}
+
+Exercise 3: Let $f_n:A\to\R$, for $A\subseteq\R$, be uniformly continuous. Show that
+if $(f_n)$ converges uniformly to the function $f$ then $f$ is uniformly continuous.
+
+We wish to show that $f$ is uniformly continuous. Let $\varepsilon>0$. We know
+there exists $N\in\N$ such that $n\geq N\implies
+|f_n(x)-f(x)|<\frac{\varepsilon}{3}$ for all $x\in A$. Since $f_n$ is uniformly
+continuous, there exists $\delta>0$ so that
+$|f_N(y)-f_N(x)|<\frac{\varepsilon}{3}$ whenever $|x-y|<\delta$ for any choice of
+$x,y\in A$. Then
+\[
+\def\arraystretch{1.5}
+\begin{array}{rl}
+|f(y)-f(x)| &= |f(y)-f_N(y)+f_N(y)-f_N(x)+f_N(x)-f(x)| \\
+&\leq |f(y)-f_N(y)|+|f_N(y)-f_N(x)|+|f_N(x)-f(x)| \\
+&\leq 3\cdot\frac{\varepsilon}{3}=\varepsilon
+\end{array}
+\]
+whenever $|x-y|<\delta$. Therefore $f$ is uniformly continuous on $A$.
+
+Exercise 5: Let $x\in[0,\infty)$ and define
+\[
+f_n(x)=\frac{nx}{nx+1}
+\]
+Find the pointwise limit $f(x)=\lim_{n\to\infty} f_n(x)$ for $x\in[0,\infty)$ and prove it.
+prove that the convergence is uniform on $[1,\infty)$ and is not uniform
+on $[0,\infty)$. Is it uniform on $(0,\infty)$?
+
+The pointwise limit is $f(x)=1$. To prove it, fix $x\in[0,\infty)$. Now take any
+$N>\frac{1}{x\varepsilon}$. Now, if $n>N$, then 
+\[
+\def\arraystretch{1.8}
+\begin{array}{rl}
+n>\frac{\frac{1}{\varepsilon}-1}{x} &\implies nx> \frac{1}{\varepsilon}-1 \\
+&\implies nx+1>\frac{1}{\varepsilon} \\
+&\implies \frac{1}{nx+1} < \varepsilon \\
+&\implies \left| \frac{nx-nx-1}{nx+1}\right|<\varepsilon \\
+&\implies \left| \frac{nx}{nx+1}-1 \right|<\varepsilon
+\end{array}
+\]
+And thus $f_n$ converges pointwise to $f(x)=1$.
+
+Exercise 10: Let $f_n(x)=\frac{\sin(nx)}{\sqrt{n}}$ for $x\in[0,\pi/2]$ and $n\in\N$.
+Prove that $f_n$ converges uniformly to 0 on $[0,\pi/2]$, but $f_n'$ does not
+converge on $[0,\pi/2]$.
+
+Pick any $\varepsilon>0$ and fix it. Now take $N>\frac{1}{\varepsilon^2}$.
+Now we can see that
+\[
+\def\arraystretch{1.5}
+\begin{array}{rl}
+\frac{1}{\varepsilon^2} &\implies \frac{1}{\varepsilon}\sqrt{n} \\
+&\implies 1<\sqrt{n}\varepsilon \\
+&\implies |\sin(nx)|<\sqrt{n}\varepsilon \\
+&\implies \left| \frac{\sin(nx)}{\sqrt{n}}\right| < \varepsilon
+\end{array}
+\]
+for any choice of $x\in[0,\pi/2]$. So, $f_n\to f(x)=0$ uniformly.
+
+Now, we can see that $f'_n(x) = \sqrt{n}\cos(nx)$. We will show that
+$f'$ fails to converge at $x=0$. Note that, for any $n$,
+$f'_n(0)=\sqrt{n\cos(0)}=\sqrt{n}$. As $n\to\infty$, $\sqrt{n}\to\infty$ as well.
+So the value of $f'_n(0)\to\infty$ as $n\to\infty$, so $f'_n$ fails to converge
+at $x=0$. 
+
+\section*{Applied Topics}
+
+
+\end{document}
