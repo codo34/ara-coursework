@@ -9,6 +9,7 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \renewcommand{\P}{{\cal P}}
+\renewcommand{\S}{{\cal S}}
 
 \pagestyle{empty}
 
@@ -130,6 +131,137 @@ So the value of $f'_n(0)\to\infty$ as $n\to\infty$, so $f'_n$ fails to converge
 at $x=0$. 
 
 \section*{Applied Topics}
+
+\subsection*{Metric and Norms}
+
+We will prove that if a metric is translation invariant and scales, then it induces a norm
+by $\|\phi\|=d(\phi,0)$.
+First, we verify the triangle inequality, using the triangle inequality for the metric $d$:
+$\|\phi+\mu\|=d(\phi+\mu,0)\leq d(\phi+\mu,\mu)+d(\mu,0)=d(\phi,0)+d(\mu,0)=\|\phi\|+\|\mu\|$.
+Next, we verify that the induced norm scales:
+$r\|\phi\|=rd(\phi,0)=d(r\phi,r\cdot0)=\|r\phi\|$.
+Finally, we see that
+$\phi\equiv0\iff d(\phi,0)=0\iff\|\phi\|=0$.
+
+\subsection*{$L^2$ norm}
+
+Let $\S = \{\phi\in C_{[0,\pi]}^0,\phi(0)=\phi(\pi)=0\}$ and define
+\[
+\|f\|=\sqrt{\int_0^\pi(f(x))^2dx}
+\]
+
+We will show that this is a norm. Notice that $(f(x))^2$ is always positive, so
+$\|f\|$ is the square root of a non-negative number, so $\|f\|\geq0$ for all $f\in\S$.
+In addition, by Exercise 7 above,
+$\|f\|=0\implies\int_0^\pi(f(x))^2dx=0\implies f(x)^2=f(x)\equiv0$.
+Going the other direction, we can see that if $f(x)\equiv0$, then $\|f\|=0$.
+Now consider scalar multiplication. For any $r\geq0$,
+$\|rf\|=\sqrt{\int_0^\pi(rf(x))^2dx}=\sqrt{r^2\int_0^\pi(f(x))^2dx}=
+r\sqrt{\int_0^\pi(f(x))^2dx}=r\|f\|$.
+Now, we prove the triangle inequality. In order to do this, we will show that the
+operation $f\cdot g=\int_0^\pi f(x)g(x)dx$ satisfies the properties of a dot product.
+We can see that $\|f\|^2=\int_0^\pi f(x)f(x)dx=f\cdot f$. We also have
+$f\cdot g=\int_0^\pi f(x)g(x)dx=\int_0^\pi g(x)f(x)dx=g\cdot f$ and
+$f\cdot (g+h)=\int_0^\pi f(x)(g(x)+h(x))dx=\int_0^\pi f(x)g(x)+f(x)h(x)dx=
+\int_0^\pi f(x)g(x)dx+\int_0^\pi f(x)h(x)dx=f\cdot g+f\cdot h$. So, this operation
+has the same properties as the dot product. We now want to show that 
+$\|f+g\|\leq\|f\|+\|g\|$. From here we follow the argument Silva uses to show a similar
+result in Example 3.1.5. Squaring the left hand side, we get
+$\|f+g\|^2=(f+g)\cdot(f+g)=\|f\|^2+2f\cdot g+\|g\|^2$. On the right hand side,
+we have
+$(\|f\|+\|g\|)^2=\|f\|^2+2\|f\|\|g\|+\|g\|^2$. The proof of the triangle inequality
+follows from showing that $f\cdot g\leq\|a\|\|b\|$. Silva proves this case of
+the Cauchy-Scwartz Inequality in the example, and we can conclude that
+the triangle inequality holds, and thus this is a norm.
+
+\subsection*{Continuity}
+
+Let $\S = \{\phi\in C_{[0,\pi]}^0,\phi(0)=\phi(\pi)=0\}$ and define
+$\|\phi\|=\int_0^\pi|\phi(x)|dx$. Consider the functional
+$G:\S\to\R$ as $G(\phi)=\int_0^\pi\phi(x)dx$.
+
+Under the metric induced by this norm, $G$ is uniformly continuous.
+Pick any $\varepsilon>0$ and fix it. Now choose any positive $\delta<\varepsilon$.
+Now, for any choice of $\phi,\mu\in\S$ such that $d(\phi,\mu)<\delta$,
+\[
+\def\arraystretch{1.5}
+\begin{array}{rl}
+\varepsilon>\delta &> \int_0^\pi|\phi(x)-\mu(x)|dx \\
+&\geq |\int_0^\pi \phi(x)-\mu(x)dx| \\
+&= |\int_0^\pi \phi(x)dx-\int_0^\pi\mu(x)dx| \\
+&= |G(\phi)-G(\mu)|.
+\end{array}
+\]
+This satisfies the definition for uniform continuity.
+
+\subsection*{Another Norm}
+
+
+Let $\S = \{\phi\in C_{[0,\pi]}^1,\phi(0)=\phi(\pi)=0\}$ and define
+\[
+\|\phi\|=\max_{x\in[0,\pi]}|\phi'(x)|
+\]
+
+We will show that $\S$ is complete under this norm.
+Let $(\phi_n)$ be a Cauchy sequence in $\S$ converging to $\phi$. 
+Notice that if $\|\phi\|<\varepsilon$, the derivative of $\phi$ is bounded.
+By the Mean Value Theorem, the maximum value of $\frac{\phi(a)-\phi(b)}{a-b}$ is 
+$\varepsilon$ too. The least upper bound we can give for $|\phi|$ is thus $\varepsilon\pi$.
+By Corollary 8.2.16, $f$ is differentiable, so $f$ is in our set, and we conclude
+that the space is complete.
+
+
+\subsection*{More Continuity}
+
+Consider $\S = \{ \phi:\phi\in C_{[0,\pi]}^0,\phi(0)=0 \}$ with the norm
+$\|\phi\|=\int_0^\pi|\phi(x)|dx$.
+Consider the operator $G:\S\to\S$ as $G(\phi)(x)=\int_0^x\phi(t)dt$.
+
+We can see that $\phi\in\S\implies G(\phi)\in\S$ because every $G(\phi)(x)$
+is differentiable, and thus continuous. In addition, for all $\phi\in\S$,
+$G(\phi)(0)=\int_0^0\phi(x)dx=0$. So, $G$ is an operator.
+
+(I think $G$ is continuous but not uniformly contiuous? Don't know how to prove.)
+
+This operator is linear. If we have two functions $\phi,\mu\in\S$, then
+$G(\phi+\mu)=\int_0^x\phi(t)+\mu(t) dt=\int_0^x\phi(t)dt+\int_0^x\mu(t)dt=G(\phi)+G(\mu)$.
+Further, for a non-negative scalar $r$,
+$G(r\phi)=\int_0^xr\phi(t)dt=r\int_0^x\phi(x)dx=rG(\phi)$.
+It also has a fixed point: if $f(x)=0$ for all $x$, then $G(f)(x)=0$ for all $x$ as well,
+and thus $G(f)=f$.
+
+\subsection*{Completeness}
+
+Show that $C_{[0,\pi]}^0$ is complete under the sup metric. 
+
+We show this by proving that every Cauchy sequence converges to a point in the space.
+Recall that the sup metric compares functions $f,g$ by the maximum value of
+$f-g$ over the interval. So, if we have a Cauchy sequence $(\phi_n)$, we know that
+$\forall\varepsilon>0\ \exists N>0$ such that
+$n,m>N\implies\max_{x\in[0,\pi]}|\phi_n(x)-\phi_m(x)|<\varepsilon$.
+At any individual $x$,
+$|\phi_n(x)-\phi_m(x)|<\max_{x\in[0,\pi]}|\phi_n(x)-\phi_m(x)|<\varepsilon$, so
+for that choice of $x$, $\phi_n(x)$ is a Cauchy sequence in $\R$, which means
+it converges to some value $\phi(x)$. So $\phi_n\to\phi$ pointwise, and we will now prove
+that this $\phi$ is in the set.
+
+Pick an $\varepsilon>0$ and fix it. Since $\phi_n$ is Cauchy, we can find
+$N$ such that $n,m>N\implies|\phi_n(x)-\phi_m(x)|<\varepsilon/3$ for all
+$x\in[0,\pi]$. Now fix $n=N+1$.
+Because $\phi_n$ is continuous on a closed interval, it is uniformly continuous on that
+interval. So, for the same $\varepsilon$, there exists a $\delta>0$ such that, for any
+$x,y\in[0,\pi]$,
+$|x-y|<\delta\implies|\phi_n(x)-\phi_n(y)|<\varepsilon$.
+Because of the pointwise convergence from earlier, we can find for any $x$
+an $M_x$ such that $m>M_x\implies|\phi_m(x)-\phi(x)|<\varepsilon/3$, and similarly we
+can find for any $y$ an $M_y$ so that $m>M_y\implies|\phi_m(y)-\phi(y)|<\varepsilon/3$.
+If we choose $m>\max(M_x,M_y)$ and keep $|x-y|<\delta$ we see that
+$|\phi_m(x)-\phi_m(y)|+|\phi_m(x)-\phi(x)|+|\phi_m(y)-\phi(y)|=
+|\phi(x)-\phi_m(x)+\phi_m(x)+\phi_m(y)-\phi_m(y)-\phi(y)|=
+|\phi(x)-\phi(y)|<3\cdot\varepsilon/3=\varepsilon$. This satisfies the definition
+of uniform continuity, so $\phi$ is continuous on $[0,\pi]$, which means
+it is a point in our set. Thus all Cauchy sequences converge in this space,
+so the space is complete.
 
 
 \end{document}
