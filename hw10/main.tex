@@ -29,6 +29,10 @@
 
 Use Lemma 3.3.4 to complete the proof of the chopping lemma, Lemma 3.2.1
 
+[Use angle difference formulas. Argue that the above argument for sin works
+for cos as well. Create a period of $2\pi/k$ with some error that
+disappears as $k\to\infty$ (that part might not quite be right)]
+
 \subsection*{0.1 Jensen's}
 
 Exercise 5.1: Prove lemma 5.2.2.
@@ -47,7 +51,7 @@ Lemma: If $\rho$ is a convex function on an interval $I$,
 $x_1,\ldots,x_n\in I$,
 and $w_1,\ldots,w_n$ are non-negative real numbers with $\sum w_i=1$, then
 \[
-    \rho(\sum w_ix_i)\leq\sumw_i\rho(x_i)
+    \rho\left(\sum w_ix_i\right)\leq\sum w_i\rho(x_i)
 \]
 with equality holding iff $\rho$ is linear on an interval containing the
 $x_i$'s, or all $x_i$'s are the same.
@@ -65,5 +69,46 @@ $\rho(wx_1+(1-w)x_2)=w\rho(x_1)+(1-w)\rho(x_2)$,
 then it is also continuous, meaning that, at any $a\in I$,
 $\forall \varepsilon>0\ \exists\delta$ such that
 $|x-a|<\delta\implies|\rho(x)-\rho(a)|<\varepsilon$.
+
+\subsection*{0.2 Euler-Lagrange}
+
+Exercise 4.1: Use Euler-Lagrange to find the extremals for:
+
+a) $\int_1^2y'^2/x^3dx$ with $y(1)=2,y(2)=17$
+\[
+\def\arraystretch{1.5}
+\begin{array}{rl}
+    g(x,y,y')=y'^2/x^3 &\textrm{and}\ 
+    \frac{\partial g}{\partial y}-\frac{d}{dx}\left(\frac{\partial g}{\partial y'}\right)=0 \\
+    &\implies 0-\frac{d}{dx}\left(\frac{2y'}{x^3}\right)=0 \\
+    &\implies \frac{2y'}{x^3}=C_0\textrm{ for some constant $C_0$} \\
+    &\implies y'=\frac{C_0}{2}x^3 \\
+    &\implies y=\int\frac{C_0}{2}x^3dx=C_1x^4+C_2 \\
+    \textrm{so }1C_1+C_2=2\textrm{ and }16C_1+C_2=17 &\implies
+    C_1=1,\ C_2=1 \\
+    &\implies y=x^4+1
+\end{array}
+\]
+
+b) $\int_0^{\pi/2}y^2-y'^2-2y\sin(x) dx$ with $y(0)=1,y(\pi/2)=1$
+\[
+\def\arraystretch{1.5}
+\begin{array}{rl}
+    g(x,y,y')=y^2-y'^2-2y\sin(x) &\textrm{and}\ 
+    \frac{\partial g}{\partial y}-\frac{d}{dx}\left(\frac{\partial g}{\partial y'}\right)=0 \\
+    &\implies (2y-2\sin(x))-\frac{d}{dx}\left(2y'\right)=0 \\
+    &\implies \frac{2y'}{x^3}=C_0\textrm{ for some constant $C_0$} \\
+    &\implies y'=\frac{C_0}{2}x^3 \\
+    &\implies y=\int\frac{C_0}{2}x^3dx=C_1x^4+C_2 \\
+    \textrm{so }1C_1+C_2=2\textrm{ and }16C_1+C_2=17 &\implies
+    C_1=1,\ C_2=1 \\
+    &\implies y=x^4+1
+\end{array}
+\]
+
+
+c) $\int_0^\pi y'^2+2y\sin(x) dx$ with $y(0)=0,y(\pi)=0$
+
+
 
 \end{document}
