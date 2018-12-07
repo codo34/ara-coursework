@@ -20,7 +20,7 @@
 \setlength{\parskip}{9pt}
 
 
-\section*{Math 351: Homework 10  Due Friday December 7}
+\section*{Math 351: Homework 10 Due Friday December 7}
 \subsection*{Jack Ellert-Beck}
 
 \bigskip
@@ -29,9 +29,45 @@
 
 Use Lemma 3.3.4 to complete the proof of the chopping lemma, Lemma 3.2.1
 
-[Use angle difference formulas. Argue that the above argument for sin works
-for cos as well. Create a period of $2\pi/k$ with some error that
-disappears as $k\to\infty$ (that part might not quite be right)]
+Lemma 3.3.4: If $f$ is continuous on $[-\pi,\pi]$ then
+$\int_{-\pi}^\pi\sin(Nu)f(u)du$ converges uniformly to 0.
+
+We will use this lemma to prove that if $f$ is continuous on $[-\pi,\pi]$
+then
+$I(x)=\int_{-\pi}^{\pi}\sin(K(u-x))f(u)du$
+converges uniformly to 0 as $K\to\infty$.
+Using algebra and angle difference formulas, we can rewrite $I(x)$ as
+\[
+\def\arraystretch{1.5}
+\begin{array}{rl}
+I(x)=\int_{-\pi}^\pi\sin(Ku-Kx)f(u)du &=
+    \int_{-\pi}^\pi\sin(Ku)\cos(Kx)-\cos(Ku)\sin(Kx) \\
+&= \cos(Kx)\int_{-\pi}^\pi\sin(Ku)-\sin(Kx)\int_{-\pi}^\pi\cos(Ku).
+\end{array}
+\]
+Note that the period of $\sin(Ku)$ is $\frac{2\pi}{K}$.
+In the interval $[-\pi,\pi]$, the function undergoes
+$\frac{2\pi}{K}\lfloor K\rfloor$ cycles, and the remaining portion of 
+a cycle has total width $2\pi-\frac{2\pi}{K}\lfloor K\rfloor$ which
+goes to 0 as $k\to\infty$. So, if we consider the interval that contains
+only full cycles, we will be dealing with an integral number of cycles
+no matter what, and can basically still apply Lemma 3.3.4, since this
+interval will approach $[-\pi,\pi]$ as $k\to\infty$.
+
+Also, we can argue that Lemma 3.3.4 still holds if we replace the $\sin$
+with $\cos$. We can define functions $\cos^{+}$ and $\cos^{-}$ as
+we did with $\sin$, and the properties of Lemma 3.3.1 will hold for these
+analogous functions.
+Because we are working on $[-\pi,\pi]$, $\cos$ undergoes a full
+cycle on the interval just as $\sin$ does, which helps us prove the analogues
+to Lemmas 3.3.2 and 3.3.3. In addition, $\cos$ has the same continuity
+properties as $\sin$, so $\int_{-\pi}^\pi\cos(Nu)f(u)du$ converges
+uniformly to 0 as $N\to\infty$.
+
+By these two (appropriately hand-wavy) results, we can see that both integrals
+in the rewritten form of $I(x)$ above will converge uniformly to 0
+as $k\to\infty$, so the whole of $I(x)$ converges uniformly to 0 as
+$k\to\infty$, which proves the Chopping Lemma.
 
 \subsection*{0.1 Jensen's}
 
