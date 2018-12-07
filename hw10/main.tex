@@ -59,7 +59,27 @@ $x_i$'s, or all $x_i$'s are the same.
 We proceed by induction. The base case is where $n=2$, which is true by
 Lemma 5.2.2.
 
-[FINISH THIS ONE BOY]
+For the inductive step, assume that 
+\[
+    \rho\left(\sum_{i=0}^n w_ix_i\right)=\sum_{i=0}^n w_i\rho(x_i)
+\]
+implies that either all $x_i$'s are the same or $\rho$ is linear 
+for some $n\geq2$. We will show that
+\[
+    \rho\left(\sum_{i=0}^{n+1} w_ix_i\right)=\sum_{i=0}^{n+1} w_i\rho(x_i)
+\]
+implies that either all $x_i$'s are the same or $\rho$ is linear.
+We rewrite the latter equation:
+\[
+\def\arraystretch{1.5}
+\begin{array}{rl}
+& \rho\left(\sum_{i=0}^{n+1}w_ix_i\right) =
+    \rho\left(\left(\sum_{i=0}^nw_ix_i\right)+w_{n+1}x_{n+1}\right) \\
+\textrm{by Lemma 5.2.2}&\implies \sum_{i=0}^nw_i\rho(x_i)+w_{n+1}\rho(x_{n+1}) \\
+&\implies \sum_{i=0}^{n+1}w_ix_i \\
+&\implies \textrm{ and that either $x_i$'s are the same or $\rho$ is linear.}
+\end{array}
+\]
 
 Exercise 5.3: Prove that convex functions are continuous.
 
@@ -74,13 +94,18 @@ First, we will see that $\rho(x)$ is bounded on $I$.
 Let $A=\min(\rho(a),\rho(b))$.
 Note that any $c\in[a,b]$ can be written as
 $wa+(1-w)b$ when $w=\frac{b-c}{b-a}$. Thus, by convexity,
-$\rho(c)<leq\frac{w\rho(a)+(1-w)\rho(b)}\leq wA+(1-w)=A$.
+$\rho(c)\leq w\rho(a)+(1-w)\rho(b)\leq wA+(1-w)=A$.
 
 Pick any $\varepsilon>0$. If
-$\varepsilon\leq\max(|\rho(x)-\rho(b)|,|\rho(a)-\rho(x)|)$, then any
+$\varepsilon\geq\max(|\rho(c)-\rho(b)|,|\rho(a)-\rho(c)|)$, then any
 choice of $\delta$ satisfies the definition of continuity. So, we now
 consider only cases where
-$\varepsilon<\max(|\rho(x)-\rho(b)|,|\rho(a)-\rho(x)|)$.
+$\varepsilon<A-\rho(c)$. Let $c_1=\frac{a-c}{2}$.
+If $|\rho(c_1)-\rho(c)|<\varepsilon$, then pick $\delta<|c_1-c|$. If not,
+let $c_2=\frac{c_1-c}{c}$. Note that $c<c_2<c_1$.
+Keep picking $c_n$ in this way until, for some $N$,
+$|\rho(c_N)-\rho(c)|<\varepsilon$. Choosing $0<\delta<c_N$ will make
+$|f(c)-f(x)|<\varepsilon$. Thus, $\rho$ is continuous on $I$.
 
 \subsection*{0.2 Euler-Lagrange}
 
