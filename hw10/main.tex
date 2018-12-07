@@ -75,11 +75,23 @@ Exercise 5.1: Prove lemma 5.2.2.
 
 Lemma: If $\rho$ is convex on $I$, and $x_1,x_2\in I$, and equality holds
 \[
-    \rho(wx_1+(1-w)x_2)\leq w\rho(x_1)+(1-w)\rho(x_2)
+    \rho(wx_1+(1-w)x_2) = w\rho(x_1)+(1-w)\rho(x_2)
 \]
 for some $0<w<1$, then either $x_1=x_2$ or $\rho$ is linear on $[x_1,x_2]$.
 
-[BY CONTRADICTION? CONFUSING]
+Pick any $x_1<x_2\in I$.
+Pick some $w<1$ and let $c=wx_1+(1-w)x_2$. Note that, by the above equation,
+$(c,\rho(c))$ is a point on the secant line through
+$(x_1,\rho(x_1))$ and $(x_2,\rho(x_2))$.
+Assume for contradiction that $\rho$ is convex
+but not linear on $[x_1,c]$ and $[c,x_2]$. Pick
+$a\in[x_1,c]$ and $b\in[c,x_2]$ such that $\rho(a)$ and $\rho(b)$ lie
+below the secant line through $\rho(x_1)$ and $\rho(x_2)$. 
+Now notice that we can write $c$ as $va+(1-v)b$ for some
+$v<1$. However, $\rho(c)>v\rho(a)+(1-v)\rho(b)$, which implies
+that $\rho$ is not convex on $I$, a contradiction. Thus, if $x_1\neq x_2$,
+then $\rho$ must be linear. So, if the equality condition holds,
+either $x_1=x_2$ or $\rho$ is linear on $I$. 
 
 Exercise 5.2: Prove lemma 5.2.3.
 
@@ -87,9 +99,9 @@ Lemma: If $\rho$ is a convex function on an interval $I$,
 $x_1,\ldots,x_n\in I$,
 and $w_1,\ldots,w_n$ are non-negative real numbers with $\sum w_i=1$, then
 \[
-    \rho\left(\sum w_ix_i\right)\leq\sum w_i\rho(x_i)
+    \rho\left(\sum w_ix_i\right)\sum w_i\rho(x_i)
 \]
-with equality holding iff $\rho$ is linear on an interval containing the
+if and only if $\rho$ is linear on an interval containing the
 $x_i$'s, or all $x_i$'s are the same.
 
 We proceed by induction. The base case is where $n=2$, which is true by
