@@ -63,12 +63,24 @@ Lemma 5.2.2.
 
 Exercise 5.3: Prove that convex functions are continuous.
 
-We will show that if a function $\rho:I\to\R$ has the property that, for
+We will show that if a function $\rho:I\to\R$ (where $I=(a,b)$) has the property that, for
 $x_1,x_2\in I$ and all $0\leq w\leq1$,
-$\rho(wx_1+(1-w)x_2)=w\rho(x_1)+(1-w)\rho(x_2)$,
-then it is also continuous, meaning that, at any $a\in I$,
+$\rho(wx_1+(1-w)x_2)\leq w\rho(x_1)+(1-w)\rho(x_2)$,
+then it is continuous on $(a,b)$, meaning that, at any $c\in I$,
 $\forall \varepsilon>0\ \exists\delta$ such that
-$|x-a|<\delta\implies|\rho(x)-\rho(a)|<\varepsilon$.
+$|x-a|<\delta\implies|\rho(x)-\rho(c)|<\varepsilon$.
+
+First, we will see that $\rho(x)$ is bounded on $I$.
+Let $A=\min(\rho(a),\rho(b))$.
+Note that any $c\in[a,b]$ can be written as
+$wa+(1-w)b$ when $w=\frac{b-c}{b-a}$. Thus, by convexity,
+$\rho(c)<leq\frac{w\rho(a)+(1-w)\rho(b)}\leq wA+(1-w)=A$.
+
+Pick any $\varepsilon>0$. If
+$\varepsilon\leq\max(|\rho(x)-\rho(b)|,|\rho(a)-\rho(x)|)$, then any
+choice of $\delta$ satisfies the definition of continuity. So, we now
+consider only cases where
+$\varepsilon<\max(|\rho(x)-\rho(b)|,|\rho(a)-\rho(x)|)$.
 
 \subsection*{0.2 Euler-Lagrange}
 
@@ -96,18 +108,31 @@ b) $\int_0^{\pi/2}y^2-y'^2-2y\sin(x) dx$ with $y(0)=1,y(\pi/2)=1$
 \begin{array}{rl}
     g(x,y,y')=y^2-y'^2-2y\sin(x) &\textrm{and}\ 
     \frac{\partial g}{\partial y}-\frac{d}{dx}\left(\frac{\partial g}{\partial y'}\right)=0 \\
-    &\implies (2y-2\sin(x))-\frac{d}{dx}\left(2y'\right)=0 \\
-    &\implies \frac{2y'}{x^3}=C_0\textrm{ for some constant $C_0$} \\
-    &\implies y'=\frac{C_0}{2}x^3 \\
-    &\implies y=\int\frac{C_0}{2}x^3dx=C_1x^4+C_2 \\
-    \textrm{so }1C_1+C_2=2\textrm{ and }16C_1+C_2=17 &\implies
+    &\implies (2y-2\sin(x))-\frac{d}{dx}\left(-2y'\right)=0 \\
+    &\implies y''=\sin(x)-y \\
+    &\implies y=C_2\sin(x)+C_1\cos(x)-\frac{1}{2}x\cos(x) \\
+    &\textrm{ (from Mathematica) } \\
+    \textrm{so }0C_2+1C_1-0=1\textrm{ and }1C_2+0C_1-0=1 &\implies
     C_1=1,\ C_2=1 \\
-    &\implies y=x^4+1
+    &\implies y=\sin(x)+\cos(x)-\frac{1}{2}x\cos(x)
 \end{array}
 \]
 
-
 c) $\int_0^\pi y'^2+2y\sin(x) dx$ with $y(0)=0,y(\pi)=0$
+\[
+\def\arraystretch{1.5}
+\begin{array}{rl}
+    g(x,y,y')=y'^2+2y\sin(x) &\textrm{and}\ 
+    \frac{\partial g}{\partial y}-\frac{d}{dx}\left(\frac{\partial g}{\partial y'}\right)=0 \\
+    &\implies 2\sin(x)-\frac{d}{dx}\left(2y'\right)=0 \\
+    &\implies y''=\sin(x) \\
+    &\implies y=-\sin(x)+C_1x+C_2\\
+    &\textrm{ (from Mathematica) } \\
+    \textrm{so }0C_1+C_2=0\textrm{ and }\pi C_1+C_2=0 &\implies
+    C_1=0,\ C_2=0 \\
+    &\implies y=-\sin(x)
+\end{array}
+\]
 
 
 
